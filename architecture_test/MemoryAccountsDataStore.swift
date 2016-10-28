@@ -29,37 +29,31 @@ final class MemoryAccountsDataSource: AccountsDataSource {
         accounts = [a1, a2]
     }
 
-    func all(completion: @escaping (Result<[AccountModel], AccountError>) -> Void) {
-        completion(.success(accounts))
+    func all() throws -> [AccountModel] {
+        return accounts
     }
 
-    func newAccount(completion: @escaping (Result<AccountModel, AccountError>) -> Void) {
-        let account = MemoryAccount()
-        completion(.success(account))
+    func newAccount() throws -> AccountModel {
+        return MemoryAccount()
     }
 
-    func add(account: AccountModel, completion: (Result<Void, AccountError>) -> Void) {
+    func add(account: AccountModel) throws {
         let newAccount = MemoryAccount(accountModel: account)
         accounts.append(newAccount)
-        completion(.success())
     }
 
-    func update(account: AccountModel, completion: (Result<Void, AccountError>) -> Void) {
+    func update(account: AccountModel) throws {
         guard let existingAccount = findAccount(withId: account.id) else {
-            completion(.failure(.accountNotFound))
-            return
+            throw AccountError.accountNotFound
         }
         existingAccount.name = account.name
-        completion(.success())
     }
 
-    func delete(account: AccountModel, completion: (Result<Void, AccountError>) -> Void) {
+    func delete(account: AccountModel) throws {
         guard let existingAccount = findAccount(withId: account.id) else {
-            completion(.failure(.accountNotFound))
-            return
+            throw AccountError.accountNotFound
         }
         accounts = accounts.filter { $0.id != existingAccount.id }
-        completion(.success())
     }
 
     private func findAccount(withId id: String) -> MemoryAccount? {

@@ -17,9 +17,9 @@ protocol AccountModel {
 }
 
 protocol AccountsDataSource {
-    func all(completion: @escaping (Result<[AccountModel], AccountError>) -> Void)
-    func newAccount(completion: @escaping (Result<AccountModel, AccountError>) -> Void)
-    func add(account: AccountModel, completion: (Result<Void, AccountError>) -> Void)
-    func update(account: AccountModel, completion: (Result<Void, AccountError>) -> Void)
-    func delete(account: AccountModel, completion: (Result<Void, AccountError>) -> Void)
+    func all() throws -> [AccountModel]
+    func newAccount() throws -> AccountModel
+    func add(account: AccountModel) throws
+    func update(account: AccountModel) throws
+    func delete(account: AccountModel) throws
 }

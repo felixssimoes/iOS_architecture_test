@@ -28,14 +28,14 @@ final class AccountsDataProvider {
     }
 
     func allAccounts(completion: @escaping (Result<[Account], AccountError>) -> Void) {
-        dataSource.all { result in
-            switch result {
-            case .success(let models):
-                let accounts = models.map { Account(accountModel: $0) }
-                completion(.success(accounts))
-
-            case .failure(let error): completion(.failure(error))
-            }
+        do {
+            let accounts = try dataSource.all().map { Account(accountModel: $0) }
+            completion(.success(accounts))
+        } catch(let error as AccountError) {
+            completion(.failure(error))
+        }
+        catch {
+            completion(.failure(.other))
         }
     }
 
@@ -45,27 +45,41 @@ final class AccountsDataProvider {
             return
         }
 
-        dataSource.newAccount { result in
-            switch result {
-            case .success(let account):
-                var newAccount = Account(accountModel: account)
-                newAccount.name = name
-                self.dataSource.update(account: newAccount) { result in
-                    switch result {
-                    case .success: completion(.success(newAccount))
-                    case .failure(let error): completion(.failure(error))
-                    }
-                }
-            case .failure(let error): completion(.failure(error))
-            }
+        do {
+            var newAccount = Account(accountModel: try dataSource.newAccount())
+            newAccount.name = name
+            try dataSource.update(account: newAccount)
+            completion(.success(newAccount))
+
+        } catch(let error as AccountError) {
+            completion(.failure(error))
+        }
+        catch {
+            completion(.failure(.other))
         }
     }
 
     func update(account: Account, completion: @escaping (Result<Void, AccountError>) -> Void) {
-        dataSource.update(account: account, completion: completion)
+        do {
+            try dataSource.update(account: account)
+            completion(.success())
+        } catch(let error as AccountError) {
+            completion(.failure(error))
+        }
+        catch {
+            completion(.failure(.other))
+        }
     }
 
     func deleteAccount(account: Account, completion: @escaping (Result<Void, AccountError>) -> Void) {
-        dataSource.delete(account: account, completion: completion)
+        do {
+            try dataSource.delete(account: account)
+            completion(.success())
+        } catch(let error as AccountError) {
+            completion(.failure(error))
+        }
+        catch {
+            completion(.failure(.other))
+        }
     }
 }
