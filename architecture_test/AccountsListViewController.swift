@@ -11,11 +11,8 @@ import UIKit
 class AccountsListViewController: UITableViewController {
 
     var viewModel: AccountsListViewModel!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    }
+    
+    // MARK: - View controller lifecycle
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,7 +28,7 @@ class AccountsListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AccountListCell", for: indexPath)
         if let account = viewModel.account(at: indexPath.row) {
             cell.textLabel?.text = account.name
         }

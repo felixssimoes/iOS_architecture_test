@@ -32,6 +32,7 @@ class AppSetup {
     let accountsDataProvider: AccountsDataProvider
 
     var navigationController: UINavigationController?
+    var storyboard = UIStoryboard(name: "Accounts", bundle: nil)
 
     init(window: UIWindow) {
         self.window = window
@@ -42,7 +43,7 @@ class AppSetup {
 
     func start() {
 
-        let vc = AccountsListViewController()
+        let vc = storyboard.instantiateViewController(withIdentifier: "AccountsList") as! AccountsListViewController
         vc.viewModel = AccountsListViewModel(accountsDataProvider: accountsDataProvider)
         vc.viewModel.selectAccountCallback = { account in
             self.showAccount(account)
@@ -53,9 +54,13 @@ class AppSetup {
     }
 
     func showAccount(_ account: Account) {
-        let vc = AccountDetailViewController()
+        showDetail(forAccount: account)
+    }
+    
+    private func showDetail(forAccount account: Account?) {
+        let vc = storyboard.instantiateViewController(withIdentifier: "AccountDetail") as! AccountDetailViewController
         let nc = UINavigationController(rootViewController: vc)
-
+        
         vc.viewModel = AccountDetailViewModel(account: account, accountsDataProvider: accountsDataProvider)
         vc.viewModel.cancelCallback = {
             nc.dismiss(animated: true, completion: nil)
@@ -63,7 +68,7 @@ class AppSetup {
         vc.viewModel.saveCallback = {
             nc.dismiss(animated: true, completion: nil)
         }
-
+        
         navigationController?.present(nc, animated: true, completion: nil)
     }
 }

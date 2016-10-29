@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Accounts-->
+        <scene sceneID="74D-rC-93k">
+            <objects>
+                <tableViewController storyboardIdentifier="AccountsList" id="PmN-0v-dI5" customClass="AccountsListViewController" customModule="architecture_test" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qvd-fK-epe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rRc-pU-vRi">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rRc-pU-vRi" id="qbJ-Pn-tXo">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AccountListCell" id="vhj-Ht-rgA">
+                                <rect key="frame" x="0.0" y="136" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vhj-Ht-rgA" id="NlR-e2-LKK">
+                                    <frame key="frameInset" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PmN-0v-dI5" id="V5r-ia-aIw"/>
+                            <outlet property="delegate" destination="PmN-0v-dI5" id="rfz-KA-hlj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Accounts" id="pWJ-Yg-zJ6">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="OYY-p4-yD3">
+                            <connections>
+                                <action selector="didSelectAddButton" destination="PmN-0v-dI5" id="e4z-XO-Ghy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n57-LV-i1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-316" y="108"/>
+        </scene>
+        <!--Account Detail-->
+        <scene sceneID="hXl-2l-SlN">
+            <objects>
+                <viewController storyboardIdentifier="AccountDetail" id="mNn-GW-3Z6" customClass="AccountDetailViewController" customModule="architecture_test" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2sd-NT-3Na"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q3A-Qc-YXX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rrg-Cf-uLY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JS-8k-Q4U">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c8s-co-yYG">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c8s-co-yYG" firstAttribute="leading" secondItem="rrg-Cf-uLY" secondAttribute="leadingMargin" id="Ml2-rS-NOK"/>
+                            <constraint firstItem="3JS-8k-Q4U" firstAttribute="trailing" secondItem="rrg-Cf-uLY" secondAttribute="trailingMargin" id="Rg3-u1-1Bz"/>
+                            <constraint firstItem="3JS-8k-Q4U" firstAttribute="leading" secondItem="rrg-Cf-uLY" secondAttribute="leadingMargin" id="VQr-Mz-RqJ"/>
+                            <constraint firstItem="3JS-8k-Q4U" firstAttribute="top" secondItem="2sd-NT-3Na" secondAttribute="bottom" constant="30" id="Xga-33-dvQ"/>
+                            <constraint firstItem="c8s-co-yYG" firstAttribute="trailing" secondItem="rrg-Cf-uLY" secondAttribute="trailingMargin" id="ZSD-mV-TFZ"/>
+                            <constraint firstItem="c8s-co-yYG" firstAttribute="top" secondItem="3JS-8k-Q4U" secondAttribute="bottom" constant="8" id="ZTR-Ii-3zF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Account Detail" id="XFc-Yh-0Pd">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="DPX-Mp-Se6">
+                            <connections>
+                                <action selector="didSelectCancelButton" destination="mNn-GW-3Z6" id="0lv-m8-hdK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="KQw-OV-JrB">
+                            <connections>
+                                <action selector="didSelectSaveButton" destination="mNn-GW-3Z6" id="hNz-wQ-FSN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="nameField" destination="c8s-co-yYG" id="S3K-xY-20n"/>
+                        <outlet property="nameLabel" destination="3JS-8k-Q4U" id="8Ez-1v-xp8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NGv-sp-RRm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="365.60000000000002" y="108.39580209895054"/>
+        </scene>
+    </scenes>
+</document>
