@@ -46,6 +46,8 @@ class AppSetup {
         let vc = storyboard.instantiateViewController(withIdentifier: "AccountsList") as! AccountsListViewController
         vc.viewModel = AccountsListViewModel(accountsDataProvider: accountsDataProvider)
         vc.viewModel.selectAccountCallback = { account in
+        }
+        vc.viewModel.selectAccountDetailCallback = { account in
             self.showAccount(account)
         }
         vc.viewModel.addAccountCallback = {

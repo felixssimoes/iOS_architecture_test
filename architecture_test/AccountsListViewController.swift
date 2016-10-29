@@ -44,4 +44,8 @@ class AccountsListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.selectAccount(at: indexPath.row)
     }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        viewModel.selectAccountDetail(at: indexPath.row)
+    }
 }

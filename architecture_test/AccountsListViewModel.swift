@@ -28,6 +28,12 @@ class AccountsListViewModel {
         selectAccountCallback?(accounts[index])
     }
     
+    var selectAccountDetailCallback: ((Account) -> Void)?
+    func selectAccountDetail(at index: Int) {
+        guard index < numberOfAccounts else { return }
+        selectAccountDetailCallback?(accounts[index])
+    }
+    
     var addAccountCallback: (() -> Void)?
     func addAccount() {
         addAccountCallback?()
