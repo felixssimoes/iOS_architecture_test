@@ -37,4 +37,8 @@ class AccountsListViewController: UITableViewController {
         }
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectAccount(at: indexPath.row)
+    }
 }

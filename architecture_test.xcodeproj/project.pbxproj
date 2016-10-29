@@ -16,6 +16,8 @@
 		DC16BC861DC3AEBB005FBDC2 /* AccountsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC851DC3AEBB005FBDC2 /* AccountsDataProvider.swift */; };
 		DC16BC881DC3BA16005FBDC2 /* AccountsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC871DC3BA16005FBDC2 /* AccountsListViewModel.swift */; };
 		DC16BC8A1DC3BB8B005FBDC2 /* AccountsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC891DC3BB8B005FBDC2 /* AccountsListViewController.swift */; };
+		DC16BC8C1DC3CFFB005FBDC2 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */; };
+		DC16BC8E1DC3D009005FBDC2 /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC8D1DC3D009005FBDC2 /* AccountDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		DC16BC851DC3AEBB005FBDC2 /* AccountsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsDataProvider.swift; sourceTree = "<group>"; };
 		DC16BC871DC3BA16005FBDC2 /* AccountsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsListViewModel.swift; sourceTree = "<group>"; };
 		DC16BC891DC3BB8B005FBDC2 /* AccountsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsListViewController.swift; sourceTree = "<group>"; };
+		DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
+		DC16BC8D1DC3D009005FBDC2 /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				DC16BC891DC3BB8B005FBDC2 /* AccountsListViewController.swift */,
+				DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */,
 				DC16BC6C1DC3A280005FBDC2 /* LaunchScreen.storyboard */,
 			);
 			name = Views;
@@ -110,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				DC16BC871DC3BA16005FBDC2 /* AccountsListViewModel.swift */,
+				DC16BC8D1DC3D009005FBDC2 /* AccountDetailViewModel.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -203,7 +209,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC16BC8E1DC3D009005FBDC2 /* AccountDetailViewModel.swift in Sources */,
 				DC16BC841DC3A958005FBDC2 /* MemoryAccountsDataStore.swift in Sources */,
+				DC16BC8C1DC3CFFB005FBDC2 /* AccountDetailViewController.swift in Sources */,
 				DC16BC861DC3AEBB005FBDC2 /* AccountsDataProvider.swift in Sources */,
 				DC16BC821DC3A47C005FBDC2 /* Result.swift in Sources */,
 				DC16BC8A1DC3BB8B005FBDC2 /* AccountsListViewController.swift in Sources */,
@@ -363,6 +371,7 @@
 				DC16BC741DC3A280005FBDC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

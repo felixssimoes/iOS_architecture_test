@@ -60,6 +60,11 @@ final class AccountsDataProvider {
     }
 
     func update(account: Account, completion: @escaping (Result<Void, AccountError>) -> Void) {
+        guard !account.name.isEmpty else {
+            completion(.failure(.invalidName))
+            return
+        }
+
         do {
             try dataSource.update(account: account)
             completion(.success())
