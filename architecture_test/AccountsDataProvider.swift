@@ -48,7 +48,7 @@ final class AccountsDataProvider {
         do {
             var newAccount = Account(accountModel: try dataSource.newAccount())
             newAccount.name = name
-            try dataSource.update(account: newAccount)
+            try dataSource.add(account: newAccount)
             completion(.success(newAccount))
 
         } catch(let error as AccountError) {
