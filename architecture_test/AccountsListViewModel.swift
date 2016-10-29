@@ -27,6 +27,11 @@ class AccountsListViewModel {
         guard index < numberOfAccounts else { return }
         selectAccountCallback?(accounts[index])
     }
+    
+    var addAccountCallback: (() -> Void)?
+    func addAccount() {
+        addAccountCallback?()
+    }
 
     func reloadData(completion: @escaping (Result<Void, AccountError>) -> Void) {
         dataProvider.allAccounts { result in

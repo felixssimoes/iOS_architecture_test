@@ -48,9 +48,16 @@ class AppSetup {
         vc.viewModel.selectAccountCallback = { account in
             self.showAccount(account)
         }
+        vc.viewModel.addAccountCallback = {
+            self.addAccount()
+        }
 
         navigationController = UINavigationController(rootViewController: vc)
         window.rootViewController = navigationController
+    }
+    
+    func addAccount() {
+        showDetail(forAccount: nil)
     }
 
     func showAccount(_ account: Account) {

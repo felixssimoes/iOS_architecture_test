@@ -20,6 +20,12 @@ class AccountsListViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func didSelectAddButton() {
+        viewModel.addAccount()
+    }
 
     // MARK: - Table view data source
 
