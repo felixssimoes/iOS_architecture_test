@@ -5,6 +5,19 @@
 
 import Foundation
 
+class MemoryDataStore: DataStore {
+    private let accountsDataProvider: AccountsDataProvider
+    
+    init() {
+        let accountsDataSource = MemoryAccountsDataSource()
+        accountsDataProvider = AccountsDataProvider(accountsDataSource: accountsDataSource)
+    }
+    
+    func accounts() -> AccountsDataProvider {
+        return accountsDataProvider
+    }
+}
+
 private class MemoryAccount: AccountModel {
     fileprivate (set) var name: String
     let id: String
