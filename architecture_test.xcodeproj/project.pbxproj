@@ -18,6 +18,7 @@
 		DC16BC8A1DC3BB8B005FBDC2 /* AccountsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC891DC3BB8B005FBDC2 /* AccountsListViewController.swift */; };
 		DC16BC8C1DC3CFFB005FBDC2 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */; };
 		DC16BC8E1DC3D009005FBDC2 /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC8D1DC3D009005FBDC2 /* AccountDetailViewModel.swift */; };
+		DC3B443C1DC52F24006C8805 /* AccountsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3B443B1DC52F24006C8805 /* AccountsCoordinator.swift */; };
 		DC3B443E1DC52F93006C8805 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3B443D1DC52F93006C8805 /* DataStore.swift */; };
 		DC99C53B1DC4D27500EC071B /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC99C53A1DC4D27500EC071B /* Accounts.storyboard */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		DC16BC891DC3BB8B005FBDC2 /* AccountsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsListViewController.swift; sourceTree = "<group>"; };
 		DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
 		DC16BC8D1DC3D009005FBDC2 /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
+		DC3B443B1DC52F24006C8805 /* AccountsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsCoordinator.swift; sourceTree = "<group>"; };
 		DC3B443D1DC52F93006C8805 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		DC99C53A1DC4D27500EC071B /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Accounts.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 		DC16BC621DC3A280005FBDC2 /* architecture_test */ = {
 			isa = PBXGroup;
 			children = (
+				DC3B443A1DC52F11006C8805 /* Coordinators */,
 				DC16BC781DC3A2AD005FBDC2 /* Application */,
 				DC16BC7B1DC3A319005FBDC2 /* Models */,
 				DC16BC791DC3A2E3005FBDC2 /* View Models */,
@@ -140,6 +143,14 @@
 				DC16BC811DC3A47C005FBDC2 /* Result.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		DC3B443A1DC52F11006C8805 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				DC3B443B1DC52F24006C8805 /* AccountsCoordinator.swift */,
+			);
+			name = Coordinators;
 			sourceTree = "<group>";
 		};
 		DC99C5391DC4D25E00EC071B /* Accounts */ = {
@@ -233,6 +244,7 @@
 				DC16BC8A1DC3BB8B005FBDC2 /* AccountsListViewController.swift in Sources */,
 				DC16BC7D1DC3A32D005FBDC2 /* AccountModel.swift in Sources */,
 				DC16BC881DC3BA16005FBDC2 /* AccountsListViewModel.swift in Sources */,
+				DC3B443C1DC52F24006C8805 /* AccountsCoordinator.swift in Sources */,
 				DC16BC641DC3A280005FBDC2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

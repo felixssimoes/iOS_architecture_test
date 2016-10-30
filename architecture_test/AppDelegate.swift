@@ -27,57 +27,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 class AppSetup {
     private let window: UIWindow
+    private let dataStore: MemoryDataStore
 
-    let accountsDataSource: MemoryAccountsDataSource
-    let accountsDataProvider: AccountsDataProvider
-
-    var navigationController: UINavigationController?
-    var storyboard = UIStoryboard(name: "Accounts", bundle: nil)
+    private var navigationController: UINavigationController?
+    private var accountsCoordinator: AccountsCoordinator?
 
     init(window: UIWindow) {
         self.window = window
-
-        accountsDataSource = MemoryAccountsDataSource()
-        accountsDataProvider = AccountsDataProvider(accountsDataSource: accountsDataSource)
+        dataStore = MemoryDataStore()
     }
 
     func start() {
-
-        let vc = storyboard.instantiateViewController(withIdentifier: "AccountsList") as! AccountsListViewController
-        vc.viewModel = AccountsListViewModel(accountsDataProvider: accountsDataProvider)
-        vc.viewModel.selectAccountCallback = { account in
-        }
-        vc.viewModel.selectAccountDetailCallback = { account in
-            self.showAccount(account)
-        }
-        vc.viewModel.addAccountCallback = {
-            self.addAccount()
-        }
-
-        navigationController = UINavigationController(rootViewController: vc)
+        navigationController = UINavigationController()
         window.rootViewController = navigationController
-    }
-    
-    func addAccount() {
-        showDetail(forAccount: nil)
-    }
-
-    func showAccount(_ account: Account) {
-        showDetail(forAccount: account)
-    }
-    
-    private func showDetail(forAccount account: Account?) {
-        let vc = storyboard.instantiateViewController(withIdentifier: "AccountDetail") as! AccountDetailViewController
-        let nc = UINavigationController(rootViewController: vc)
         
-        vc.viewModel = AccountDetailViewModel(account: account, accountsDataProvider: accountsDataProvider)
-        vc.viewModel.cancelCallback = {
-            nc.dismiss(animated: true, completion: nil)
-        }
-        vc.viewModel.saveCallback = {
-            nc.dismiss(animated: true, completion: nil)
-        }
-        
-        navigationController?.present(nc, animated: true, completion: nil)
+        accountsCoordinator = AccountsCoordinator(navigationController: navigationController!, dataStore: dataStore)
+        accountsCoordinator?.start()
     }
 }
