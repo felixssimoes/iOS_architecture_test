@@ -27,6 +27,7 @@ class AccountsCoordinator {
         let vc = storyboard.instantiateViewController(withIdentifier: "AccountsList") as! AccountsListViewController
         vc.viewModel = AccountsListViewModel(accountsDataProvider: dataStore.accounts())
         vc.viewModel.selectAccountCallback = { account in
+            self.showTransactions(forAccount: account)
         }
         vc.viewModel.selectAccountDetailCallback = { account in
             self.showDetail(forAccount: account)
@@ -51,5 +52,11 @@ class AccountsCoordinator {
         }
         
         navigationController.present(nc, animated: true, completion: nil)
+    }
+    
+    private func showTransactions(forAccount account: Account) {
+        let vc = UIStoryboard(name: "Transactions", bundle: nil).instantiateViewController(withIdentifier: "TransactionsList") as! TransactionsListViewController
+        vc.viewModel = TransactionsListViewModel(account: account, dataStore: dataStore)
+        navigationController.pushViewController(vc, animated: true)
     }
 }

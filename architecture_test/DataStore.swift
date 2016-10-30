@@ -10,4 +10,5 @@ import Foundation
 
 protocol DataStore {
     func accounts() -> AccountsDataProvider
+    func transactions(forAccount: AccountModel) -> TransactionsDataProvider
 }
