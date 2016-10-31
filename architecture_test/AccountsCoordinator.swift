@@ -55,8 +55,7 @@ class AccountsCoordinator {
     }
     
     private func showTransactions(forAccount account: Account) {
-        let vc = UIStoryboard(name: "Transactions", bundle: nil).instantiateViewController(withIdentifier: "TransactionsList") as! TransactionsListViewController
-        vc.viewModel = TransactionsListViewModel(account: account, dataStore: dataStore)
-        navigationController.pushViewController(vc, animated: true)
+        let transactionsCoordinator = TransactionsCoordinator(account: account, navigationController: navigationController, dataStore: dataStore)
+        transactionsCoordinator.start()
     }
 }
