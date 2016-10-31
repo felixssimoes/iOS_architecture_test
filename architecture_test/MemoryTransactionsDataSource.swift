@@ -7,6 +7,7 @@ import Foundation
 private class MemoryTransaction: TransactionModel {
     let id: String
     let account: AccountModel
+    let accountId: String
     var category: String
     var date: Date
     var amount: Decimal
@@ -14,6 +15,7 @@ private class MemoryTransaction: TransactionModel {
     init(transactionModel model: TransactionModel) {
         id = UUID().uuidString
         account = model.account
+        accountId = account.id
         category = model.category
         date = model.date
         amount = model.amount
@@ -22,6 +24,7 @@ private class MemoryTransaction: TransactionModel {
     init(accountModel: AccountModel) {
         id = UUID().uuidString
         account = accountModel
+        accountId = account.id
         category = ""
         date = Date()
         amount = 0
@@ -44,8 +47,8 @@ final class MemoryTransactionsDataSource: TransactionsDataSource {
     init() {
     }
 
-    func all(forAccount: AccountModel) throws -> [TransactionModel] {
-        return transactions
+    func all(forAccount account: AccountModel) throws -> [TransactionModel] {
+        return transactions.filter { $0.accountId == account.id }
     }
 
     func newTransaction(forAccount account: AccountModel) throws -> TransactionModel {
