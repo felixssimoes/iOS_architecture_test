@@ -43,4 +43,10 @@ class TransactionsListViewModel {
             }
         }
     }
+    
+    var newTransactionCallback: (() -> Void)?
+    func newTransaction() {
+        newTransactionCallback?()
+        dataStore.transactions(forAccount: account).addTransaction(withCategory: "t-\(account.name)", date: Date(), amount: 11) {_ in}
+    }
 }

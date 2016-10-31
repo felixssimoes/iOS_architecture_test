@@ -29,6 +29,13 @@ class TransactionsListViewController: UITableViewController {
         }
     }
     
+    // MARK: - Actions
+    
+    @IBAction func didSelectAddButton() {
+        viewModel.newTransaction()
+        tableView.reloadData()
+    }
+    
     // MARK: - Table view
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

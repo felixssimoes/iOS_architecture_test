@@ -29,6 +29,9 @@ class TransactionsCoordinator {
     private func showTransactionsList() {
         let vc = storyboard.instantiateViewController(withIdentifier: "TransactionsList") as! TransactionsListViewController
         vc.viewModel = TransactionsListViewModel(account: account, dataStore: dataStore)
+        vc.viewModel.newTransactionCallback = {
+            
+        }
         navigationController.pushViewController(vc, animated: true)
     }
 }
