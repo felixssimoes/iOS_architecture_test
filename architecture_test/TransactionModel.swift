@@ -19,9 +19,9 @@ enum TransactionError: Error {
 protocol TransactionModel {
     var account: AccountModel { get }
     var id: String { get }
-    var category: String { get }
-    var date: Date { get }
-    var amount: Decimal { get }
+    var category: String { get set }
+    var date: Date { get set }
+    var amount: Decimal { get set }
 }
 
 

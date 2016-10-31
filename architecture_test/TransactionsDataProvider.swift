@@ -8,22 +8,6 @@
 
 import Foundation
 
-struct Transaction: TransactionModel {
-    private (set) var id: String
-    fileprivate (set) var account: AccountModel
-    var category: String
-    var date: Date
-    var amount: Decimal
-    
-    init(transactionModel model: TransactionModel) {
-        id = model.id
-        account = model.account
-        category = model.category
-        date = model.date
-        amount = model.amount
-    }
-}
-
 class TransactionsDataProvider {
     private let dataSource: TransactionsDataSource
     private let account: AccountModel
@@ -33,9 +17,9 @@ class TransactionsDataProvider {
         self.dataSource = transactionsDataSource
     }
     
-    func allTransactions(completion: @escaping (Result<[Transaction], TransactionError>) -> Void) {
+    func allTransactions(completion: @escaping (Result<[TransactionModel], TransactionError>) -> Void) {
         do {
-            let transactions = try dataSource.all(forAccount: account).map { Transaction(transactionModel: $0) }
+            let transactions = try dataSource.all(forAccount: account)
             completion(.success(transactions))
         } catch(let e as TransactionError) {
             completion(.failure(e))
@@ -44,7 +28,7 @@ class TransactionsDataProvider {
         }
     }
     
-    func addTransaction(withCategory category: String, date: Date, amount: Decimal, completion: @escaping (Result<Transaction, TransactionError>) -> Void) {
+    func addTransaction(withCategory category: String, date: Date, amount: Decimal, completion: @escaping (Result<TransactionModel, TransactionError>) -> Void) {
         guard !category.isEmpty else {
             completion(.failure(.invalidCategory))
             return
@@ -55,7 +39,7 @@ class TransactionsDataProvider {
         }
         
         do {
-            var transaction = Transaction(transactionModel: try dataSource.newTransaction(forAccount: account))
+            var transaction = try dataSource.newTransaction(forAccount: account)
             transaction.category = category
             transaction.date = date
             transaction.amount = amount
@@ -70,7 +54,7 @@ class TransactionsDataProvider {
         }
     }
     
-    func update(transaction: Transaction, completion: @escaping (Result<Void, TransactionError>) -> Void) {
+    func update(transaction: TransactionModel, completion: @escaping (Result<Void, TransactionError>) -> Void) {
         guard !transaction.category.isEmpty else {
             completion(.failure(.invalidCategory))
             return
@@ -91,7 +75,7 @@ class TransactionsDataProvider {
         }
     }
     
-    func delete(transaction: Transaction, completion: @escaping (Result<Void, TransactionError>) -> Void) {
+    func delete(transaction: TransactionModel, completion: @escaping (Result<Void, TransactionError>) -> Void) {
         do {
             try dataSource.delete(transaction: transaction)
             completion(.success())

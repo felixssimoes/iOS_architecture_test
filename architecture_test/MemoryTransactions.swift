@@ -7,9 +7,9 @@ import Foundation
 private class MemoryTransaction: TransactionModel {
     let id: String
     let account: AccountModel
-    fileprivate (set) var category: String
-    fileprivate (set) var date: Date
-    fileprivate (set) var amount: Decimal
+    var category: String
+    var date: Date
+    var amount: Decimal
 
     init(transactionModel model: TransactionModel) {
         id = UUID().uuidString

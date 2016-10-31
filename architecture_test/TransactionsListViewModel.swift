@@ -11,7 +11,7 @@ import Foundation
 class TransactionsListViewModel {
     private let dataStore: DataStore
     private let account: AccountModel
-    private var transactions: [Transaction] = []
+    private var transactions: [TransactionModel] = []
     
     let title: String
     
@@ -26,7 +26,7 @@ class TransactionsListViewModel {
         return transactions.count
     }
     
-    func transaction(at index: Int) -> Transaction? {
+    func transaction(at index: Int) -> TransactionModel? {
         guard index < numberOfTransactions else { return nil }
         return transactions[index]
     }
