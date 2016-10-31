@@ -28,18 +28,20 @@ private class MemoryTransaction: TransactionModel {
     }
 }
 
+private var transactions: [MemoryTransaction] = []
+
 final class MemoryTransactionsDataSource: TransactionsDataSource {
-    private var transactions: [MemoryTransaction] = []
-    private let account: AccountModel
 
     init(account: AccountModel) {
-        self.account = account
 
         let t1 = MemoryTransaction(accountModel: account); t1.category = "Category 1"; t1.amount = 11
         let t2 = MemoryTransaction(accountModel: account); t2.category = "Category 1"; t2.amount = 22
         let t3 = MemoryTransaction(accountModel: account); t3.category = "Category 2"; t3.amount = 33
 
         transactions = [t1, t2, t3]
+    }
+
+    init() {
     }
 
     func all(forAccount: AccountModel) throws -> [TransactionModel] {

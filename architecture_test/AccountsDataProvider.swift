@@ -6,15 +6,15 @@
 import Foundation
 
 final class AccountsDataProvider {
-    private let dataSource: AccountsDataSource
+    private let dataSource: DataSource
 
-    init(accountsDataSource: AccountsDataSource) {
-        dataSource = accountsDataSource
+    init(dataSource: DataSource) {
+        self.dataSource = dataSource
     }
 
     func allAccounts(completion: @escaping (Result<[AccountModel], AccountError>) -> Void) {
         do {
-            let accounts = try dataSource.all()
+            let accounts = try dataSource.accounts().all()
             completion(.success(accounts))
         } catch(let error as AccountError) {
             completion(.failure(error))
@@ -31,9 +31,9 @@ final class AccountsDataProvider {
         }
 
         do {
-            var newAccount = try dataSource.newAccount()
+            var newAccount = try dataSource.accounts().newAccount()
             newAccount.name = name
-            try dataSource.add(account: newAccount)
+            try dataSource.accounts().add(account: newAccount)
             completion(.success(newAccount))
 
         } catch(let error as AccountError) {
@@ -51,7 +51,7 @@ final class AccountsDataProvider {
         }
 
         do {
-            try dataSource.update(account: account)
+            try dataSource.accounts().update(account: account)
             completion(.success())
         } catch(let error as AccountError) {
             completion(.failure(error))
@@ -63,7 +63,7 @@ final class AccountsDataProvider {
 
     func deleteAccount(account: AccountModel, completion: @escaping (Result<Void, AccountError>) -> Void) {
         do {
-            try dataSource.delete(account: account)
+            try dataSource.accounts().delete(account: account)
             completion(.success())
         } catch(let error as AccountError) {
             completion(.failure(error))

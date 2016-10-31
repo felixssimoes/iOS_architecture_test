@@ -9,17 +9,17 @@
 import Foundation
 
 class TransactionsDataProvider {
-    private let dataSource: TransactionsDataSource
+    private let dataSource: DataSource
     private let account: AccountModel
     
-    init(account: AccountModel, transactionsDataSource: TransactionsDataSource) {
+    init(account: AccountModel, dataSource: DataSource) {
         self.account = account
-        self.dataSource = transactionsDataSource
+        self.dataSource = dataSource
     }
     
     func allTransactions(completion: @escaping (Result<[TransactionModel], TransactionError>) -> Void) {
         do {
-            let transactions = try dataSource.all(forAccount: account)
+            let transactions = try dataSource.transactions().all(forAccount: account)
             completion(.success(transactions))
         } catch(let e as TransactionError) {
             completion(.failure(e))
@@ -39,12 +39,12 @@ class TransactionsDataProvider {
         }
         
         do {
-            var transaction = try dataSource.newTransaction(forAccount: account)
+            var transaction = try dataSource.transactions().newTransaction(forAccount: account)
             transaction.category = category
             transaction.date = date
             transaction.amount = amount
             
-            try dataSource.add(transaction: transaction)
+            try dataSource.transactions().add(transaction: transaction)
             completion(.success(transaction))
         
         } catch(let e as TransactionError) {
@@ -65,7 +65,7 @@ class TransactionsDataProvider {
         }
         
         do {
-            try dataSource.update(transaction: transaction)
+            try dataSource.transactions().update(transaction: transaction)
             completion(.success())
             
         } catch(let e as TransactionError) {
@@ -77,7 +77,7 @@ class TransactionsDataProvider {
     
     func delete(transaction: TransactionModel, completion: @escaping (Result<Void, TransactionError>) -> Void) {
         do {
-            try dataSource.delete(transaction: transaction)
+            try dataSource.transactions().delete(transaction: transaction)
             completion(.success())
             
         } catch(let e as TransactionError) {

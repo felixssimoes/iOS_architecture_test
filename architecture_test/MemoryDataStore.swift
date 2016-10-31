@@ -4,20 +4,32 @@
 
 import Foundation
 
-class MemoryDataStore: DataStore {
-    private let accountsDataProvider: AccountsDataProvider
+class MemoryDataSource: DataSource {
+    private let accountsDataSource: AccountsDataSource
+    private let transactionsDataSource: TransactionsDataSource
 
     init() {
-        let accountsDataSource = MemoryAccountsDataSource()
-        accountsDataProvider = AccountsDataProvider(accountsDataSource: accountsDataSource)
+        accountsDataSource = MemoryAccountsDataSource()
+        transactionsDataSource = MemoryTransactionsDataSource()
     }
 
+    func accounts() -> AccountsDataSource {
+        return accountsDataSource
+    }
+
+    func transactions() -> TransactionsDataSource {
+        return transactionsDataSource
+    }
+}
+
+class MemoryDataStore: DataStore {
+    let dataSource = MemoryDataSource()
+
     func accounts() -> AccountsDataProvider {
-        return accountsDataProvider
+        return AccountsDataProvider(dataSource: dataSource)
     }
 
     func transactions(forAccount account: AccountModel) -> TransactionsDataProvider {
-        let transactionsDataSource = MemoryTransactionsDataSource(account: account)
-        return TransactionsDataProvider(account: account, transactionsDataSource: transactionsDataSource)
+        return TransactionsDataProvider(account: account, dataSource: dataSource)
     }
 }
