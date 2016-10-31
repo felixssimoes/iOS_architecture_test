@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CCE97B817B5B7101BBF6395 /* TransactionsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE91BDDCD3436E41D683F2 /* TransactionsDataProvider.swift */; };
+		5CCE999B1B19FD8D76C6A30C /* MemoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE941074C7F3BC91748A11 /* MemoryDataStore.swift */; };
+		5CCE9AD18EEEB56E3DE47A6F /* MemoryTransactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE91A9113956D98BB2A948 /* MemoryTransactions.swift */; };
+		5CCE9E9825706210710F2FD0 /* AccountsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE938B718B6BE9D21838E4 /* AccountsDataProvider.swift */; };
+		5CCE9F523551A41615AD40DA /* MemoryAccountsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */; };
 		DC16BC641DC3A280005FBDC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC631DC3A280005FBDC2 /* AppDelegate.swift */; };
 		DC16BC6B1DC3A280005FBDC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC16BC6A1DC3A280005FBDC2 /* Assets.xcassets */; };
 		DC16BC6E1DC3A280005FBDC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC16BC6C1DC3A280005FBDC2 /* LaunchScreen.storyboard */; };
 		DC16BC7D1DC3A32D005FBDC2 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC7C1DC3A32D005FBDC2 /* AccountModel.swift */; };
 		DC16BC821DC3A47C005FBDC2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC811DC3A47C005FBDC2 /* Result.swift */; };
-		DC16BC841DC3A958005FBDC2 /* MemoryAccountsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC831DC3A958005FBDC2 /* MemoryAccountsDataStore.swift */; };
-		DC16BC861DC3AEBB005FBDC2 /* AccountsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC851DC3AEBB005FBDC2 /* AccountsDataProvider.swift */; };
 		DC16BC881DC3BA16005FBDC2 /* AccountsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC871DC3BA16005FBDC2 /* AccountsListViewModel.swift */; };
 		DC16BC8A1DC3BB8B005FBDC2 /* AccountsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC891DC3BB8B005FBDC2 /* AccountsListViewController.swift */; };
 		DC16BC8C1DC3CFFB005FBDC2 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */; };
@@ -21,7 +24,6 @@
 		DC3B443C1DC52F24006C8805 /* AccountsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3B443B1DC52F24006C8805 /* AccountsCoordinator.swift */; };
 		DC3B443E1DC52F93006C8805 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3B443D1DC52F93006C8805 /* DataStore.swift */; };
 		DC4FCD1D1DC6A9B2007D28AE /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4FCD1C1DC6A9B2007D28AE /* TransactionModel.swift */; };
-		DC4FCD1F1DC6AAA8007D28AE /* TransactionsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4FCD1E1DC6AAA8007D28AE /* TransactionsDataProvider.swift */; };
 		DC4FCD241DC6B5EC007D28AE /* TransactionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4FCD231DC6B5EC007D28AE /* TransactionsListViewController.swift */; };
 		DC4FCD261DC6B60F007D28AE /* TransactionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4FCD251DC6B60F007D28AE /* TransactionsListViewModel.swift */; };
 		DC4FCD281DC6B883007D28AE /* Transactions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC4FCD271DC6B883007D28AE /* Transactions.storyboard */; };
@@ -30,6 +32,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5CCE91A9113956D98BB2A948 /* MemoryTransactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryTransactions.swift; sourceTree = "<group>"; };
+		5CCE91BDDCD3436E41D683F2 /* TransactionsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsDataProvider.swift; sourceTree = "<group>"; };
+		5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryAccountsDataStore.swift; sourceTree = "<group>"; };
+		5CCE938B718B6BE9D21838E4 /* AccountsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsDataProvider.swift; sourceTree = "<group>"; };
+		5CCE941074C7F3BC91748A11 /* MemoryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryDataStore.swift; sourceTree = "<group>"; };
 		DC16BC601DC3A280005FBDC2 /* architecture_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = architecture_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC16BC631DC3A280005FBDC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC16BC6A1DC3A280005FBDC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,8 +44,6 @@
 		DC16BC6F1DC3A280005FBDC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC16BC7C1DC3A32D005FBDC2 /* AccountModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		DC16BC811DC3A47C005FBDC2 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
-		DC16BC831DC3A958005FBDC2 /* MemoryAccountsDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryAccountsDataStore.swift; sourceTree = "<group>"; };
-		DC16BC851DC3AEBB005FBDC2 /* AccountsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsDataProvider.swift; sourceTree = "<group>"; };
 		DC16BC871DC3BA16005FBDC2 /* AccountsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsListViewModel.swift; sourceTree = "<group>"; };
 		DC16BC891DC3BB8B005FBDC2 /* AccountsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsListViewController.swift; sourceTree = "<group>"; };
 		DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +51,6 @@
 		DC3B443B1DC52F24006C8805 /* AccountsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountsCoordinator.swift; sourceTree = "<group>"; };
 		DC3B443D1DC52F93006C8805 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		DC4FCD1C1DC6A9B2007D28AE /* TransactionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
-		DC4FCD1E1DC6AAA8007D28AE /* TransactionsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsDataProvider.swift; sourceTree = "<group>"; };
 		DC4FCD231DC6B5EC007D28AE /* TransactionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsListViewController.swift; sourceTree = "<group>"; };
 		DC4FCD251DC6B60F007D28AE /* TransactionsListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsListViewModel.swift; sourceTree = "<group>"; };
 		DC4FCD271DC6B883007D28AE /* Transactions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Transactions.storyboard; sourceTree = "<group>"; };
@@ -65,6 +69,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CCE91F026819FDBAD4CEBED /* Data Providers */ = {
+			isa = PBXGroup;
+			children = (
+				5CCE91BDDCD3436E41D683F2 /* TransactionsDataProvider.swift */,
+				5CCE938B718B6BE9D21838E4 /* AccountsDataProvider.swift */,
+			);
+			name = "Data Providers";
+			sourceTree = "<group>";
+		};
+		5CCE9E6D991677CD5AAA201E /* MemoryDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */,
+				5CCE91A9113956D98BB2A948 /* MemoryTransactions.swift */,
+				5CCE941074C7F3BC91748A11 /* MemoryDataStore.swift */,
+			);
+			name = MemoryDataStore;
+			sourceTree = "<group>";
+		};
 		DC16BC571DC3A280005FBDC2 = {
 			isa = PBXGroup;
 			children = (
@@ -145,9 +168,8 @@
 				DC3B443D1DC52F93006C8805 /* DataStore.swift */,
 				DC16BC7C1DC3A32D005FBDC2 /* AccountModel.swift */,
 				DC4FCD1C1DC6A9B2007D28AE /* TransactionModel.swift */,
-				DC16BC851DC3AEBB005FBDC2 /* AccountsDataProvider.swift */,
-				DC4FCD1E1DC6AAA8007D28AE /* TransactionsDataProvider.swift */,
-				DC16BC831DC3A958005FBDC2 /* MemoryAccountsDataStore.swift */,
+				5CCE9E6D991677CD5AAA201E /* MemoryDataStore */,
+				5CCE91F026819FDBAD4CEBED /* Data Providers */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -282,18 +304,20 @@
 				DC4FCD241DC6B5EC007D28AE /* TransactionsListViewController.swift in Sources */,
 				DC4FCD261DC6B60F007D28AE /* TransactionsListViewModel.swift in Sources */,
 				DC16BC8E1DC3D009005FBDC2 /* AccountDetailViewModel.swift in Sources */,
-				DC16BC841DC3A958005FBDC2 /* MemoryAccountsDataStore.swift in Sources */,
 				DCEF6A191DC76090000EF33E /* TransactionsCoordinator.swift in Sources */,
 				DC16BC8C1DC3CFFB005FBDC2 /* AccountDetailViewController.swift in Sources */,
-				DC16BC861DC3AEBB005FBDC2 /* AccountsDataProvider.swift in Sources */,
 				DC3B443E1DC52F93006C8805 /* DataStore.swift in Sources */,
 				DC16BC821DC3A47C005FBDC2 /* Result.swift in Sources */,
 				DC16BC8A1DC3BB8B005FBDC2 /* AccountsListViewController.swift in Sources */,
-				DC4FCD1F1DC6AAA8007D28AE /* TransactionsDataProvider.swift in Sources */,
 				DC16BC7D1DC3A32D005FBDC2 /* AccountModel.swift in Sources */,
 				DC16BC881DC3BA16005FBDC2 /* AccountsListViewModel.swift in Sources */,
 				DC3B443C1DC52F24006C8805 /* AccountsCoordinator.swift in Sources */,
 				DC16BC641DC3A280005FBDC2 /* AppDelegate.swift in Sources */,
+				5CCE9F523551A41615AD40DA /* MemoryAccountsDataStore.swift in Sources */,
+				5CCE97B817B5B7101BBF6395 /* TransactionsDataProvider.swift in Sources */,
+				5CCE9E9825706210710F2FD0 /* AccountsDataProvider.swift in Sources */,
+				5CCE9AD18EEEB56E3DE47A6F /* MemoryTransactions.swift in Sources */,
+				5CCE999B1B19FD8D76C6A30C /* MemoryDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

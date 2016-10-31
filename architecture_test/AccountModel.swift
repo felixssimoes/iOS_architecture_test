@@ -13,7 +13,7 @@ enum AccountError: Error {
 
 protocol AccountModel {
     var id: String { get }
-    var name: String { get }
+    var name: String { get set }
 }
 
 protocol AccountsDataSource {

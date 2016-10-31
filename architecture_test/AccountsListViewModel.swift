@@ -7,7 +7,7 @@ import Foundation
 
 class AccountsListViewModel {
     private let dataProvider: AccountsDataProvider
-    private var accounts: [Account] = []
+    private var accounts: [AccountModel] = []
 
     init(accountsDataProvider: AccountsDataProvider) {
         dataProvider = accountsDataProvider
@@ -17,18 +17,18 @@ class AccountsListViewModel {
         return accounts.count
     }
 
-    func account(at index: Int) -> Account? {
+    func account(at index: Int) -> AccountModel? {
         guard index < numberOfAccounts else { return nil }
         return accounts[index]
     }
 
-    var selectAccountCallback: ((Account) -> Void)?
+    var selectAccountCallback: ((AccountModel) -> Void)?
     func selectAccount(at index: Int) {
         guard index < numberOfAccounts else { return }
         selectAccountCallback?(accounts[index])
     }
     
-    var selectAccountDetailCallback: ((Account) -> Void)?
+    var selectAccountDetailCallback: ((AccountModel) -> Void)?
     func selectAccountDetail(at index: Int) {
         guard index < numberOfAccounts else { return }
         selectAccountDetailCallback?(accounts[index])

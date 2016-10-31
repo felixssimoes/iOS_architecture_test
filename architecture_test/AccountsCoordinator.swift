@@ -39,7 +39,7 @@ class AccountsCoordinator {
         navigationController.viewControllers = [vc]
     }
     
-    private func showDetail(forAccount account: Account?) {
+    private func showDetail(forAccount account: AccountModel?) {
         let vc = storyboard.instantiateViewController(withIdentifier: "AccountDetail") as! AccountDetailViewController
         let nc = UINavigationController(rootViewController: vc)
         
@@ -54,7 +54,7 @@ class AccountsCoordinator {
         navigationController.present(nc, animated: true, completion: nil)
     }
     
-    private func showTransactions(forAccount account: Account) {
+    private func showTransactions(forAccount account: AccountModel) {
         let transactionsCoordinator = TransactionsCoordinator(account: account, navigationController: navigationController, dataStore: dataStore)
         transactionsCoordinator.start()
     }

@@ -5,21 +5,6 @@
 
 import Foundation
 
-struct Account: AccountModel {
-    fileprivate let model: AccountModel
-
-    var id: String {
-        return model.id
-    }
-
-    var name: String
-
-    init(accountModel: AccountModel) {
-        model = accountModel
-        name = model.name
-    }
-}
-
 final class AccountsDataProvider {
     private let dataSource: AccountsDataSource
 
@@ -27,9 +12,9 @@ final class AccountsDataProvider {
         dataSource = accountsDataSource
     }
 
-    func allAccounts(completion: @escaping (Result<[Account], AccountError>) -> Void) {
+    func allAccounts(completion: @escaping (Result<[AccountModel], AccountError>) -> Void) {
         do {
-            let accounts = try dataSource.all().map { Account(accountModel: $0) }
+            let accounts = try dataSource.all()
             completion(.success(accounts))
         } catch(let error as AccountError) {
             completion(.failure(error))
@@ -39,14 +24,14 @@ final class AccountsDataProvider {
         }
     }
 
-    func addAccount(withName name: String, completion: @escaping (Result<Account, AccountError>) -> Void) {
+    func addAccount(withName name: String, completion: @escaping (Result<AccountModel, AccountError>) -> Void) {
         guard !name.isEmpty else {
             completion(.failure(.invalidName))
             return
         }
 
         do {
-            var newAccount = Account(accountModel: try dataSource.newAccount())
+            var newAccount = try dataSource.newAccount()
             newAccount.name = name
             try dataSource.add(account: newAccount)
             completion(.success(newAccount))
@@ -59,7 +44,7 @@ final class AccountsDataProvider {
         }
     }
 
-    func update(account: Account, completion: @escaping (Result<Void, AccountError>) -> Void) {
+    func update(account: AccountModel, completion: @escaping (Result<Void, AccountError>) -> Void) {
         guard !account.name.isEmpty else {
             completion(.failure(.invalidName))
             return
@@ -76,7 +61,7 @@ final class AccountsDataProvider {
         }
     }
 
-    func deleteAccount(account: Account, completion: @escaping (Result<Void, AccountError>) -> Void) {
+    func deleteAccount(account: AccountModel, completion: @escaping (Result<Void, AccountError>) -> Void) {
         do {
             try dataSource.delete(account: account)
             completion(.success())

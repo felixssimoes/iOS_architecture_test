@@ -7,11 +7,11 @@ import Foundation
 
 class AccountDetailViewModel {
     private let dataProvider: AccountsDataProvider
-    private var account: Account?
+    private var account: AccountModel?
 
     var name: String
 
-    init(account: Account?, accountsDataProvider: AccountsDataProvider) {
+    init(account: AccountModel?, accountsDataProvider: AccountsDataProvider) {
         self.dataProvider = accountsDataProvider
         self.account = account
         self.name = account?.name ?? ""

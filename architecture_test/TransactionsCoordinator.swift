@@ -12,11 +12,11 @@ import UIKit
 class TransactionsCoordinator {
     private let navigationController: UINavigationController
     private let dataStore: DataStore
-    private let account: Account
+    private let account: AccountModel
     
     private let storyboard = UIStoryboard(name: "Transactions", bundle: nil)
     
-    init(account: Account, navigationController: UINavigationController, dataStore: DataStore) {
+    init(account: AccountModel, navigationController: UINavigationController, dataStore: DataStore) {
         self.navigationController = navigationController
         self.dataStore = dataStore
         self.account = account

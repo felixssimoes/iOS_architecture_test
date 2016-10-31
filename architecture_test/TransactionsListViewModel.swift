@@ -10,12 +10,12 @@ import Foundation
 
 class TransactionsListViewModel {
     private let dataStore: DataStore
-    private let account: Account
+    private let account: AccountModel
     private var transactions: [Transaction] = []
     
     let title: String
     
-    init(account: Account, dataStore: DataStore) {
+    init(account: AccountModel, dataStore: DataStore) {
         self.account = account
         self.dataStore = dataStore
         
