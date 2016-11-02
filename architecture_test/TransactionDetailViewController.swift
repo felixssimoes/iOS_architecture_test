@@ -27,6 +27,24 @@ class TransactionDetailViewController: UITableViewController {
 
     var viewModel: TransactionDetailViewModel!
 
+    // MARK: - Actions
+
+    @IBAction func didSelectCancelButton() {
+        viewModel.cancel()
+    }
+
+    @IBAction func didSelectSaveButton() {
+        viewModel.category = "The Category"
+        viewModel.amount = Decimal(arc4random() % 100)
+        viewModel.save { result in
+            if case .failure(let error) = result {
+                print(error)
+            }
+        }
+    }
+
+    // MARK: - Table view
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }

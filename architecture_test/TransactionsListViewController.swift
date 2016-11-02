@@ -33,7 +33,6 @@ class TransactionsListViewController: UITableViewController {
     
     @IBAction func didSelectAddButton() {
         viewModel.newTransaction()
-        tableView.reloadData()
     }
     
     // MARK: - Table view
@@ -49,4 +48,9 @@ class TransactionsListViewController: UITableViewController {
         }
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectTransaction(at: indexPath.row)
+    }
+
 }

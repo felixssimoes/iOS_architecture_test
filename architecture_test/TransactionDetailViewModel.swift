@@ -24,6 +24,7 @@ class TransactionDetailViewModel {
 
     init(account: AccountModel, dataStore: DataStore) {
         self.dataStore = dataStore
+        self.transaction = nil
         self.account = account
         self.category = ""
         self.date = Date()

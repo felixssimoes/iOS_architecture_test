@@ -30,8 +30,40 @@ class TransactionsCoordinator {
         let vc = storyboard.instantiateViewController(withIdentifier: "TransactionsList") as! TransactionsListViewController
         vc.viewModel = TransactionsListViewModel(account: account, dataStore: dataStore)
         vc.viewModel.newTransactionCallback = {
-            
+            self.showNewTransaction()
+        }
+        vc.viewModel.selectTransactionCallback = { transaction in
+            self.showDetail(forTransaction: transaction)
         }
         navigationController.pushViewController(vc, animated: true)
+    }
+
+    private func showDetail(forTransaction transaction: TransactionModel) {
+        let vc = storyboard.instantiateViewController(withIdentifier: "TransactionDetail") as! TransactionDetailViewController
+
+        vc.viewModel = TransactionDetailViewModel(transaction: transaction, dataStore: dataStore)
+        vc.viewModel.cancelCallback = {
+            self.navigationController.popViewController(animated: true)
+        }
+        vc.viewModel.saveCallback = {
+            self.navigationController.popViewController(animated: true)
+        }
+
+        navigationController.pushViewController(vc, animated: true)
+    }
+
+    private func showNewTransaction() {
+        let vc = storyboard.instantiateViewController(withIdentifier: "TransactionDetail") as! TransactionDetailViewController
+        let nc = UINavigationController(rootViewController: vc)
+
+        vc.viewModel = TransactionDetailViewModel(account: account, dataStore: dataStore)
+        vc.viewModel.cancelCallback = {
+            nc.dismiss(animated: true)
+        }
+        vc.viewModel.saveCallback = {
+            nc.dismiss(animated: true)
+        }
+
+        navigationController.present(nc, animated: true)
     }
 }
