@@ -6,10 +6,10 @@
 import Foundation
 
 class AccountsListViewModel {
-    private let dataProvider: AccountsDataProvider
+    private let dataProvider: AccountsDataSource
     private var accounts: [AccountModel] = []
 
-    init(accountsDataProvider: AccountsDataProvider) {
+    init(accountsDataProvider: AccountsDataSource) {
         dataProvider = accountsDataProvider
     }
 

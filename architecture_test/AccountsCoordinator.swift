@@ -11,12 +11,12 @@ import UIKit
 
 class AccountsCoordinator {
     private let navigationController: UINavigationController
-    private let dataStore: DataStore
+    private let dataSource: DataSource
     private var storyboard = UIStoryboard(name: "Accounts", bundle: nil)
 
-    init(navigationController: UINavigationController, dataStore: DataStore) {
+    init(navigationController: UINavigationController, dataSource: DataSource) {
         self.navigationController = navigationController
-        self.dataStore = dataStore
+        self.dataSource = dataSource
     }
     
     func start() {
@@ -25,7 +25,7 @@ class AccountsCoordinator {
     
     private func showAccountsList() {
         let vc = storyboard.instantiateViewController(withIdentifier: "AccountsList") as! AccountsListViewController
-        vc.viewModel = AccountsListViewModel(accountsDataProvider: dataStore.accounts())
+        vc.viewModel = AccountsListViewModel(accountsDataProvider: dataSource.accounts())
         vc.viewModel.selectAccountCallback = { account in
             self.showTransactions(forAccount: account)
         }
@@ -43,7 +43,7 @@ class AccountsCoordinator {
         let vc = storyboard.instantiateViewController(withIdentifier: "AccountDetail") as! AccountDetailViewController
         let nc = UINavigationController(rootViewController: vc)
         
-        vc.viewModel = AccountDetailViewModel(account: account, accountsDataProvider: dataStore.accounts())
+        vc.viewModel = AccountDetailViewModel(account: account, accountsDataProvider: dataSource.accounts())
         vc.viewModel.cancelCallback = {
             nc.dismiss(animated: true, completion: nil)
         }
@@ -55,7 +55,7 @@ class AccountsCoordinator {
     }
     
     private func showTransactions(forAccount account: AccountModel) {
-        let transactionsCoordinator = TransactionsCoordinator(account: account, navigationController: navigationController, dataStore: dataStore)
+        let transactionsCoordinator = TransactionsCoordinator(account: account, navigationController: navigationController, dataSource: dataSource)
         transactionsCoordinator.start()
     }
 }

@@ -27,21 +27,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 class AppSetup {
     private let window: UIWindow
-    private let dataStore: MemoryDataStore
+    private let dataStore: MemoryDataSource
 
     private var navigationController: UINavigationController?
     private var accountsCoordinator: AccountsCoordinator?
 
     init(window: UIWindow) {
         self.window = window
-        dataStore = MemoryDataStore()
+        dataStore = MemoryDataSource()
     }
 
     func start() {
         navigationController = UINavigationController()
         window.rootViewController = navigationController
         
-        accountsCoordinator = AccountsCoordinator(navigationController: navigationController!, dataStore: dataStore)
+        accountsCoordinator = AccountsCoordinator(navigationController: navigationController!, dataSource: dataStore)
         accountsCoordinator?.start()
     }
 }

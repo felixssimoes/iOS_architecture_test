@@ -33,7 +33,7 @@ private class MemoryTransaction: TransactionModel {
 
 private var transactions: [MemoryTransaction] = []
 
-final class MemoryTransactionsDataSource: TransactionsDataSource {
+final class MemoryTransactionsDataSource: TransactionsDataStore {
 
     init(account: AccountModel) {
 

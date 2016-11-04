@@ -5,7 +5,7 @@
 import Foundation
 
 class TransactionDetailViewModel {
-    private let dataStore: DataStore
+    private let dataSource: DataSource
     private let transaction: TransactionModel?
     private let account: AccountModel
 
@@ -13,8 +13,8 @@ class TransactionDetailViewModel {
     var date: Date
     var amount: Decimal
 
-    init(transaction: TransactionModel, dataStore: DataStore) {
-        self.dataStore = dataStore
+    init(transaction: TransactionModel, dataStore: DataSource) {
+        self.dataSource = dataStore
         self.transaction = transaction
         self.account = transaction.account
         self.category = transaction.category
@@ -22,8 +22,8 @@ class TransactionDetailViewModel {
         self.amount = transaction.amount
     }
 
-    init(account: AccountModel, dataStore: DataStore) {
-        self.dataStore = dataStore
+    init(account: AccountModel, dataStore: DataSource) {
+        self.dataSource = dataStore
         self.transaction = nil
         self.account = account
         self.category = ""
@@ -47,7 +47,7 @@ class TransactionDetailViewModel {
     }
 
     private func addNewTransaction(completion: @escaping (Result<Void, TransactionError>) -> Void) {
-        dataStore.transactions(forAccount: account).addTransaction(
+        dataSource.transactions(forAccount: account).addTransaction(
                         withCategory: category,
                         date: date,
                         amount: amount) { result in
@@ -64,7 +64,7 @@ class TransactionDetailViewModel {
         transaction.date = date
         transaction.amount = amount
 
-        dataStore.transactions(forAccount: account).update(transaction: transaction) { result in
+        dataSource.transactions(forAccount: account).update(transaction: transaction) { result in
             switch result {
             case .success: self.saveCallback?()
             case .failure(let e): completion(.failure(e))

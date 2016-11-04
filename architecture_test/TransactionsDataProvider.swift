@@ -1,25 +1,22 @@
 //
-//  TransactionsDataProvider.swift
-//  architecture_test
-//
 //  Created by Felix Simoes on 30/10/2016.
 //
 //
 
 import Foundation
 
-class TransactionsDataProvider {
-    private let dataSource: DataSource
+class LocalTransactionsDataSource: TransactionsDataSource {
+    private let dataStore: DataStore
     private let account: AccountModel
     
-    init(account: AccountModel, dataSource: DataSource) {
+    init(account: AccountModel, dataStore: DataStore) {
         self.account = account
-        self.dataSource = dataSource
+        self.dataStore = dataStore
     }
     
     func allTransactions(completion: @escaping (Result<[TransactionModel], TransactionError>) -> Void) {
         do {
-            let transactions = try dataSource.transactions().all(forAccount: account)
+            let transactions = try dataStore.transactions().all(forAccount: account)
             completion(.success(transactions))
         } catch(let e as TransactionError) {
             completion(.failure(e))
@@ -39,12 +36,12 @@ class TransactionsDataProvider {
         }
         
         do {
-            var transaction = try dataSource.transactions().newTransaction(forAccount: account)
+            var transaction = try dataStore.transactions().newTransaction(forAccount: account)
             transaction.category = category
             transaction.date = date
             transaction.amount = amount
             
-            try dataSource.transactions().add(transaction: transaction)
+            try dataStore.transactions().add(transaction: transaction)
             completion(.success(transaction))
         
         } catch(let e as TransactionError) {
@@ -65,7 +62,7 @@ class TransactionsDataProvider {
         }
         
         do {
-            try dataSource.transactions().update(transaction: transaction)
+            try dataStore.transactions().update(transaction: transaction)
             completion(.success())
             
         } catch(let e as TransactionError) {
@@ -77,7 +74,7 @@ class TransactionsDataProvider {
     
     func delete(transaction: TransactionModel, completion: @escaping (Result<Void, TransactionError>) -> Void) {
         do {
-            try dataSource.transactions().delete(transaction: transaction)
+            try dataStore.transactions().delete(transaction: transaction)
             completion(.success())
             
         } catch(let e as TransactionError) {

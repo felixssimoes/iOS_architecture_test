@@ -9,15 +9,15 @@
 import Foundation
 
 class TransactionsListViewModel {
-    private let dataStore: DataStore
+    private let dataSource: DataSource
     private let account: AccountModel
     private var transactions: [TransactionModel] = []
     
     let title: String
     
-    init(account: AccountModel, dataStore: DataStore) {
+    init(account: AccountModel, dataStore: DataSource) {
         self.account = account
-        self.dataStore = dataStore
+        self.dataSource = dataStore
         
         title = "\(account.name)'s transactions"
     }
@@ -32,7 +32,7 @@ class TransactionsListViewModel {
     }
     
     func reloadData(completion: @escaping (Result<Void, TransactionError>) -> Void) {
-        dataStore.transactions(forAccount: account).allTransactions { result in
+        dataSource.transactions(forAccount: account).allTransactions { result in
             switch result {
             case.success(let transactions):
                 self.transactions = transactions
