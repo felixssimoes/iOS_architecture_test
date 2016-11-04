@@ -34,7 +34,8 @@ class AppSetup {
 
     init(window: UIWindow) {
         self.window = window
-        dataStore = MemoryDataSource()
+//        dataSource = MemoryDataSource()
+        dataSource = RealmDataSource()
     }
 
     func start() {
