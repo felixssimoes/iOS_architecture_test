@@ -13,11 +13,11 @@
 		5CCE973F8E199C57AB3546BF /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9D010BF50BC826445D35 /* DataStore.swift */; };
 		5CCE97B817B5B7101BBF6395 /* TransactionsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE91BDDCD3436E41D683F2 /* TransactionsDataProvider.swift */; };
 		5CCE999B1B19FD8D76C6A30C /* MemoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE941074C7F3BC91748A11 /* MemoryDataStore.swift */; };
-		5CCE9AD18EEEB56E3DE47A6F /* MemoryTransactionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataSource.swift */; };
+		5CCE9AD18EEEB56E3DE47A6F /* MemoryTransactionsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataStore.swift */; };
 		5CCE9BCA6339B1114984BD12 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9B5A9DC417866F31ACAE /* DataSource.swift */; };
 		5CCE9DD66673DACEDC4BA7EC /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9C1405401E60E34B7E90 /* TransactionModel.swift */; };
 		5CCE9E9825706210710F2FD0 /* LocalAccountsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE938B718B6BE9D21838E4 /* LocalAccountsDataSource.swift */; };
-		5CCE9F523551A41615AD40DA /* MemoryAccountsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataSource.swift */; };
+		5CCE9F523551A41615AD40DA /* MemoryAccountsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */; };
 		5CCE9FAD2A1AF4C5DD98D9FE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9DC8DB6961C52CF98953 /* AccountModel.swift */; };
 		DC16BC641DC3A280005FBDC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC631DC3A280005FBDC2 /* AppDelegate.swift */; };
 		DC16BC6B1DC3A280005FBDC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC16BC6A1DC3A280005FBDC2 /* Assets.xcassets */; };
@@ -36,9 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryTransactionsDataSource.swift; sourceTree = "<group>"; };
+		5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryTransactionsDataStore.swift; sourceTree = "<group>"; };
 		5CCE91BDDCD3436E41D683F2 /* TransactionsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsDataProvider.swift; sourceTree = "<group>"; };
-		5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryAccountsDataSource.swift; sourceTree = "<group>"; };
+		5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryAccountsDataStore.swift; sourceTree = "<group>"; };
 		5CCE938B718B6BE9D21838E4 /* LocalAccountsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalAccountsDataSource.swift; sourceTree = "<group>"; };
 		5CCE941074C7F3BC91748A11 /* MemoryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryDataStore.swift; sourceTree = "<group>"; };
 		5CCE9617B7FC42ABD575C218 /* TransactionDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewModel.swift; sourceTree = "<group>"; };
@@ -100,8 +100,8 @@
 		5CCE9E6D991677CD5AAA201E /* Memory Data Store */ = {
 			isa = PBXGroup;
 			children = (
-				5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataSource.swift */,
-				5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataSource.swift */,
+				5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */,
+				5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataStore.swift */,
 				5CCE941074C7F3BC91748A11 /* MemoryDataStore.swift */,
 			);
 			name = "Memory Data Store";
@@ -394,10 +394,10 @@
 				DC16BC881DC3BA16005FBDC2 /* AccountsListViewModel.swift in Sources */,
 				DC3B443C1DC52F24006C8805 /* AccountsCoordinator.swift in Sources */,
 				DC16BC641DC3A280005FBDC2 /* AppDelegate.swift in Sources */,
-				5CCE9F523551A41615AD40DA /* MemoryAccountsDataSource.swift in Sources */,
+				5CCE9F523551A41615AD40DA /* MemoryAccountsDataStore.swift in Sources */,
 				5CCE97B817B5B7101BBF6395 /* TransactionsDataProvider.swift in Sources */,
 				5CCE9E9825706210710F2FD0 /* LocalAccountsDataSource.swift in Sources */,
-				5CCE9AD18EEEB56E3DE47A6F /* MemoryTransactionsDataSource.swift in Sources */,
+				5CCE9AD18EEEB56E3DE47A6F /* MemoryTransactionsDataStore.swift in Sources */,
 				5CCE999B1B19FD8D76C6A30C /* MemoryDataStore.swift in Sources */,
 				5CCE93D13A1D30C3E990D52A /* TransactionDetailViewController.swift in Sources */,
 				5CCE93F14BDED9A874BC9813 /* TransactionDetailViewModel.swift in Sources */,

@@ -10,7 +10,7 @@ class MemoryDataStore: DataStore {
 
     init() {
         accountsDataSource = MemoryAccountsDataStore()
-        transactionsDataSource = MemoryTransactionsDataSource()
+        transactionsDataSource = MemoryTransactionsDataStore()
     }
 
     func accounts() -> AccountsDataStore {
