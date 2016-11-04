@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 class AppSetup {
     private let window: UIWindow
-    private let dataStore: MemoryDataSource
+    private let dataSource: DataSource
 
     private var navigationController: UINavigationController?
     private var accountsCoordinator: AccountsCoordinator?
@@ -41,7 +41,7 @@ class AppSetup {
         navigationController = UINavigationController()
         window.rootViewController = navigationController
         
-        accountsCoordinator = AccountsCoordinator(navigationController: navigationController!, dataSource: dataStore)
+        accountsCoordinator = AccountsCoordinator(navigationController: navigationController!, dataSource: dataSource)
         accountsCoordinator?.start()
     }
 }
