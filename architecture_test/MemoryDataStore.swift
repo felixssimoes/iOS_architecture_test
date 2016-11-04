@@ -9,7 +9,7 @@ class MemoryDataStore: DataStore {
     private let transactionsDataSource: TransactionsDataStore
 
     init() {
-        accountsDataSource = MemoryAccountsDataSource()
+        accountsDataSource = MemoryAccountsDataStore()
         transactionsDataSource = MemoryTransactionsDataSource()
     }
 

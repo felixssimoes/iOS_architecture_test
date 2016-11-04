@@ -20,7 +20,7 @@ private class MemoryAccount: AccountModel {
     }
 }
 
-final class MemoryAccountsDataSource: AccountsDataStore {
+final class MemoryAccountsDataStore: AccountsDataStore {
     private var accounts: [MemoryAccount] = []
 
     init() {
