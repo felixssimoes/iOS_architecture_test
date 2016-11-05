@@ -11,9 +11,9 @@ enum AccountError: Error {
     case other
 }
 
-protocol AccountModel {
-    var id: String { get }
-    var name: String { get set }
+struct AccountModel {
+    let id: String
+    var name: String
 }
 
 protocol AccountsDataStore {

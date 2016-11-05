@@ -4,7 +4,7 @@
 
 import Foundation
 
-private class MemoryTransaction: TransactionModel {
+private class MemoryTransaction {
     let id: String
     let account: AccountModel
     let accountId: String
@@ -29,6 +29,10 @@ private class MemoryTransaction: TransactionModel {
         date = Date()
         amount = 0
     }
+
+    func transactionModel() -> TransactionModel {
+        return TransactionModel(id: id, account: account, category: category, date: date, amount: amount)
+    }
 }
 
 private var transactions: [MemoryTransaction] = []
@@ -48,11 +52,11 @@ final class MemoryTransactionsDataStore: TransactionsDataStore {
     }
 
     func all(forAccount account: AccountModel) throws -> [TransactionModel] {
-        return transactions.filter { $0.accountId == account.id }
+        return transactions.filter { $0.accountId == account.id } .map { $0.transactionModel() }
     }
 
     func newTransaction(forAccount account: AccountModel) throws -> TransactionModel {
-        return MemoryTransaction(accountModel: account)
+        return MemoryTransaction(accountModel: account).transactionModel()
     }
 
     func add(transaction: TransactionModel) throws {

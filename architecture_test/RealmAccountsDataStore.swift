@@ -22,10 +22,7 @@ class RealmAccountObject: Object {
     }
 }
 
-struct RealmAccount: AccountModel {
-    let id: String
-    var name: String
-
+extension AccountModel {
     init(realmAccountObject object: RealmAccountObject) {
         id = object.id
         name = object.name
@@ -40,11 +37,11 @@ final class RealmAccountsDataStore: AccountsDataStore {
     }
 
     func all() throws -> [AccountModel] {
-        return Array(realm.objects(RealmAccountObject.self)).map { RealmAccount(realmAccountObject: $0) }
+        return Array(realm.objects(RealmAccountObject.self)).map { AccountModel(realmAccountObject: $0) }
     }
 
     func newAccount() throws -> AccountModel {
-        return RealmAccount(realmAccountObject: RealmAccountObject())
+        return AccountModel(realmAccountObject: RealmAccountObject())
     }
 
     func add(account: AccountModel) throws {

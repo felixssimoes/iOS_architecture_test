@@ -14,7 +14,7 @@
 		5CCE9529EC11D8E87E19DB92 /* RealmDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9B7BF7CED953A668A35C /* RealmDataStore.swift */; };
 		5CCE959E5489CA96C9AB66CC /* RealmTransactionsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE91C99268D3AA38AE36A4 /* RealmTransactionsDataStore.swift */; };
 		5CCE973F8E199C57AB3546BF /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9D010BF50BC826445D35 /* DataStore.swift */; };
-		5CCE97B817B5B7101BBF6395 /* TransactionsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE91BDDCD3436E41D683F2 /* TransactionsDataProvider.swift */; };
+		5CCE97B817B5B7101BBF6395 /* LocalTransactionsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE91BDDCD3436E41D683F2 /* LocalTransactionsDataProvider.swift */; };
 		5CCE999B1B19FD8D76C6A30C /* MemoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE941074C7F3BC91748A11 /* MemoryDataStore.swift */; };
 		5CCE9AD18EEEB56E3DE47A6F /* MemoryTransactionsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataStore.swift */; };
 		5CCE9BCA6339B1114984BD12 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9B5A9DC417866F31ACAE /* DataSource.swift */; };
@@ -40,7 +40,7 @@
 
 /* Begin PBXFileReference section */
 		5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryTransactionsDataStore.swift; sourceTree = "<group>"; };
-		5CCE91BDDCD3436E41D683F2 /* TransactionsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsDataProvider.swift; sourceTree = "<group>"; };
+		5CCE91BDDCD3436E41D683F2 /* LocalTransactionsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalTransactionsDataProvider.swift; sourceTree = "<group>"; };
 		5CCE91C99268D3AA38AE36A4 /* RealmTransactionsDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTransactionsDataStore.swift; sourceTree = "<group>"; };
 		5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryAccountsDataStore.swift; sourceTree = "<group>"; };
 		5CCE938B718B6BE9D21838E4 /* LocalAccountsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalAccountsDataSource.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		5CCE91F026819FDBAD4CEBED /* Data Source */ = {
 			isa = PBXGroup;
 			children = (
-				5CCE91BDDCD3436E41D683F2 /* TransactionsDataProvider.swift */,
+				5CCE91BDDCD3436E41D683F2 /* LocalTransactionsDataProvider.swift */,
 				5CCE938B718B6BE9D21838E4 /* LocalAccountsDataSource.swift */,
 			);
 			name = "Data Source";
@@ -412,7 +412,7 @@
 				DC3B443C1DC52F24006C8805 /* AccountsCoordinator.swift in Sources */,
 				DC16BC641DC3A280005FBDC2 /* AppDelegate.swift in Sources */,
 				5CCE9F523551A41615AD40DA /* MemoryAccountsDataStore.swift in Sources */,
-				5CCE97B817B5B7101BBF6395 /* TransactionsDataProvider.swift in Sources */,
+				5CCE97B817B5B7101BBF6395 /* LocalTransactionsDataProvider.swift in Sources */,
 				5CCE9E9825706210710F2FD0 /* LocalAccountsDataSource.swift in Sources */,
 				5CCE9AD18EEEB56E3DE47A6F /* MemoryTransactionsDataStore.swift in Sources */,
 				5CCE999B1B19FD8D76C6A30C /* MemoryDataStore.swift in Sources */,

@@ -24,16 +24,10 @@ class RealmTransactionObject: Object {
     }
 }
 
-struct RealmTransaction: TransactionModel {
-    var account: AccountModel
-    var id: String
-    var category: String
-    var date: Date
-    var amount: Decimal
-
+extension TransactionModel {
     init(transactionObject object: RealmTransactionObject) {
-        account = RealmAccount(realmAccountObject: object.account!)
         id = object.id
+        account = AccountModel(realmAccountObject: object.account!)
         category = object.category
         date = object.date
         amount = Decimal(string: object.amount) ?? 0
@@ -49,14 +43,14 @@ class RealmTransactionsDataStore: TransactionsDataStore {
 
     func all(forAccount account: AccountModel) throws -> [TransactionModel] {
         guard let accountObject = findAccountObject(fromModel: account) else { throw TransactionError.other }
-        return Array(accountObject.transactions).map { RealmTransaction(transactionObject: $0) }
+        return Array(accountObject.transactions).map { TransactionModel(transactionObject: $0) }
     }
 
     func newTransaction(forAccount account: AccountModel) throws -> TransactionModel {
         guard let accountObject = findAccountObject(fromModel: account) else { throw TransactionError.other }
         let transaction = RealmTransactionObject()
         transaction.account = accountObject
-        return RealmTransaction(transactionObject: transaction)
+        return TransactionModel(transactionObject: transaction)
     }
 
     func add(transaction: TransactionModel) throws {

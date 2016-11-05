@@ -16,12 +16,12 @@ enum TransactionError: Error {
     case other
 }
 
-protocol TransactionModel {
-    var account: AccountModel { get }
-    var id: String { get }
-    var category: String { get set }
-    var date: Date { get set }
-    var amount: Decimal { get set }
+struct TransactionModel {
+    let id: String
+    let account: AccountModel
+    var category: String
+    var date: Date
+    var amount: Decimal
 }
 
 

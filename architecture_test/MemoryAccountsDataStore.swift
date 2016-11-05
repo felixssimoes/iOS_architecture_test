@@ -5,7 +5,7 @@
 
 import Foundation
 
-private class MemoryAccount: AccountModel {
+private class MemoryAccount {
     var name: String
     let id: String
 
@@ -17,6 +17,10 @@ private class MemoryAccount: AccountModel {
     init(accountModel model: AccountModel) {
         id = UUID().uuidString
         name = model.name
+    }
+    
+    func accountModel() -> AccountModel {
+        return AccountModel(id: id, name: name)
     }
 }
 
@@ -30,11 +34,11 @@ final class MemoryAccountsDataStore: AccountsDataStore {
     }
 
     func all() throws -> [AccountModel] {
-        return accounts
+        return accounts.map { $0.accountModel() }
     }
 
     func newAccount() throws -> AccountModel {
-        return MemoryAccount()
+        return MemoryAccount().accountModel()
     }
 
     func add(account: AccountModel) throws {
