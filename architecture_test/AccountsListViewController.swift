@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class AccountsListViewController: UITableViewController {
 
@@ -16,9 +17,14 @@ class AccountsListViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.reloadData { _ in
-            self.tableView.reloadData()
-        }
+
+        viewModel.reactiveReloadData()
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { _ in
+                    self.tableView.reloadData()
+                }, onError: { error in
+                    print(error)
+                }).dispose()
     }
     
     // MARK: - Actions

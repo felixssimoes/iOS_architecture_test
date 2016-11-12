@@ -4,6 +4,8 @@
 //
 
 import Foundation
+import RxSwift
+
 
 class AccountsListViewModel {
     private let dataProvider: AccountsDataSource
@@ -48,6 +50,23 @@ class AccountsListViewModel {
             case .failure(let error):
                 completion(.failure(error))
             }
+        }
+    }
+
+    func reactiveReloadData() -> Observable<[AccountModel]> {
+        return Observable.create { observer in
+            self.dataProvider.allAccounts { result in
+                switch result {
+                case .success(let accounts):
+                    self.accounts = accounts
+                    observer.on(.next(self.accounts))
+                    observer.on(.completed)
+                case .failure(let error):
+                    observer.on(.error(error))
+                }
+            }
+
+            return Disposables.create()
         }
     }
 }
