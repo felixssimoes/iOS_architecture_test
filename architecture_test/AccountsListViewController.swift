@@ -8,9 +8,16 @@
 
 import UIKit
 
+struct AccountsListNavigation {
+    var onNewAccount: (() -> Void)?
+    var onSelectAccount: ((AccountModel) -> Void)?
+    var onShowDetailsForAccount: ((AccountModel) -> Void)?
+}
+
 class AccountsListViewController: UITableViewController {
 
     var viewModel: AccountsListViewModel!
+    var navigation: AccountsListNavigation?
     
     // MARK: - View controller lifecycle
 
@@ -24,7 +31,7 @@ class AccountsListViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func didSelectAddButton() {
-        viewModel.addAccount()
+        navigation?.onNewAccount?()
     }
 
     // MARK: - Table view data source
@@ -42,10 +49,14 @@ class AccountsListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.selectAccount(at: indexPath.row)
+        if let account = viewModel.account(at: indexPath.row) {
+            navigation?.onSelectAccount?(account)
+        }
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        viewModel.selectAccountDetail(at: indexPath.row)
+        if let account = viewModel.account(at: indexPath.row) {
+            navigation?.onShowDetailsForAccount?(account)
+        }
     }
 }
