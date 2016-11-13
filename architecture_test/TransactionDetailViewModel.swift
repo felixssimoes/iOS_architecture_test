@@ -34,6 +34,12 @@ class TransactionDetailViewModel {
     var saveCallback:(() -> Void)?
     var cancelCallback:(() -> Void)?
 
+    var editCategoryCallback: ((String) -> Void)?
+
+    func editCategory() {
+        editCategoryCallback?(transaction?.category ?? "")
+    }
+
     func cancel() {
         cancelCallback?()
     }

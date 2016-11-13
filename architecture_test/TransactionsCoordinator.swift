@@ -48,6 +48,13 @@ class TransactionsCoordinator {
         vc.viewModel.saveCallback = {
             self.navigationController.popViewController(animated: true)
         }
+        vc.viewModel.editCategoryCallback = { category in
+            let value = TextValue(label: "Category", value: category)
+            let c = EditorsCoordinator(navigationController: self.navigationController)
+            c.startTextEditor(value: value) { category in
+                vc.viewModel.category = category
+            }
+        }
 
         navigationController.pushViewController(vc, animated: true)
     }

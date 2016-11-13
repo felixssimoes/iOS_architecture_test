@@ -27,6 +27,13 @@ class TransactionDetailViewController: UITableViewController {
 
     var viewModel: TransactionDetailViewModel!
 
+    // MARK: - View controller lifecycle
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+
     // MARK: - Actions
 
     @IBAction func didSelectCancelButton() {
@@ -34,7 +41,6 @@ class TransactionDetailViewController: UITableViewController {
     }
 
     @IBAction func didSelectSaveButton() {
-        viewModel.category = "The Category"
         viewModel.amount = Decimal(arc4random() % 100)
         viewModel.save { result in
             if case .failure(let error) = result {
@@ -63,6 +69,14 @@ class TransactionDetailViewController: UITableViewController {
         case .amount: cell.textLabel?.text = String(describing: viewModel.amount)
         }
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailSection = DetailSections(rawValue: indexPath.section) else { fatalError() }
+        switch detailSection {
+        case .category: viewModel.editCategory()
+        default: break
+        }
     }
 
 }
