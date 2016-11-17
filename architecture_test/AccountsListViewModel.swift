@@ -23,8 +23,8 @@ class AccountsListViewModel {
         return accounts[index]
     }
 
-    func reactiveReloadData() -> Observable<Void> {
-        return dataSource.reactiveAccounts().allAccounts()
+    func reloadData() -> Observable<Void> {
+        return dataSource.accounts().allAccounts()
             .flatMap { accounts -> Observable<Void> in
                 self.accounts = accounts
                 return Observable.just()

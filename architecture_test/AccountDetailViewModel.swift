@@ -20,12 +20,12 @@ class AccountDetailViewModel {
 
     var saveCallback: (() -> Void)?
 
-    func reactiveSaveAccount() -> Observable<Void> {
+    func saveAccount() -> Observable<Void> {
         if var account = account {
             account.name = name
-            return dataSource.reactiveAccounts().update(account: account)
+            return dataSource.accounts().update(account: account)
         } else {
-            return dataSource.reactiveAccounts().addAccount(withName: name).flatMap { account -> Observable<Void> in
+            return dataSource.accounts().addAccount(withName: name).flatMap { account -> Observable<Void> in
                 return Observable.just()
             }
         }

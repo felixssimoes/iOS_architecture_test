@@ -25,7 +25,7 @@ class AccountsListViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        viewModel.reactiveReloadData()
+        viewModel.reloadData()
                 .observeOn(MainScheduler.instance)
                 .subscribe(onNext: { _ in
                     self.tableView.reloadData()

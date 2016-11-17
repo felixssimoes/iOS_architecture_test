@@ -30,7 +30,7 @@ class RealmDataSource: DataSource {
         return LocalTransactionsDataSource(account: account, dataStore: dataStore)
     }
 
-    func reactiveAccounts() -> ReactiveAccountsDataSource {
-        return LocalReactiveAccountsDataSource(dataStore: dataStore)
+    func accounts() -> AccountsDataSource {
+        return LocalAccountsDataSource(dataStore: dataStore)
     }
 }

@@ -30,7 +30,7 @@ class AccountDetailViewController: UIViewController {
 
     @IBAction func didSelectSaveButton() {
         viewModel.name = nameField.text ?? ""
-        viewModel.reactiveSaveAccount()
+        viewModel.saveAccount()
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { _ in
                 self.navigation?.onSave?()

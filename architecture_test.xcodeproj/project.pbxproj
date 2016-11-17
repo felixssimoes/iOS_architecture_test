@@ -22,7 +22,7 @@
 		5CCE9AD18EEEB56E3DE47A6F /* MemoryTransactionsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataStore.swift */; };
 		5CCE9BCA6339B1114984BD12 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9B5A9DC417866F31ACAE /* DataSource.swift */; };
 		5CCE9DD66673DACEDC4BA7EC /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9C1405401E60E34B7E90 /* TransactionModel.swift */; };
-		5CCE9EB6FA76BDC0B3AECD0B /* LocalReactiveAccountsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9618BBEA9119E0355B45 /* LocalReactiveAccountsDataSource.swift */; };
+		5CCE9EB6FA76BDC0B3AECD0B /* LocalAccountsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9618BBEA9119E0355B45 /* LocalAccountsDataSource.swift */; };
 		5CCE9F523551A41615AD40DA /* MemoryAccountsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */; };
 		5CCE9FAD2A1AF4C5DD98D9FE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9DC8DB6961C52CF98953 /* AccountModel.swift */; };
 		DC16BC641DC3A280005FBDC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC631DC3A280005FBDC2 /* AppDelegate.swift */; };
@@ -50,7 +50,7 @@
 		5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryAccountsDataStore.swift; sourceTree = "<group>"; };
 		5CCE941074C7F3BC91748A11 /* MemoryDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryDataStore.swift; sourceTree = "<group>"; };
 		5CCE9617B7FC42ABD575C218 /* TransactionDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionDetailViewModel.swift; sourceTree = "<group>"; };
-		5CCE9618BBEA9119E0355B45 /* LocalReactiveAccountsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalReactiveAccountsDataSource.swift; sourceTree = "<group>"; };
+		5CCE9618BBEA9119E0355B45 /* LocalAccountsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalAccountsDataSource.swift; sourceTree = "<group>"; };
 		5CCE9813A24F89240F40FB34 /* TextEditorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewModel.swift; sourceTree = "<group>"; };
 		5CCE9B26135B98599BA2DB99 /* TextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		5CCE9B5A9DC417866F31ACAE /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				5CCE91BDDCD3436E41D683F2 /* LocalTransactionsDataProvider.swift */,
-				5CCE9618BBEA9119E0355B45 /* LocalReactiveAccountsDataSource.swift */,
+				5CCE9618BBEA9119E0355B45 /* LocalAccountsDataSource.swift */,
 			);
 			name = "Data Source";
 			sourceTree = "<group>";
@@ -456,7 +456,7 @@
 				5CCE907447F935AED1008411 /* TextEditorViewController.swift in Sources */,
 				5CCE9ABF712020B9DDD78648 /* TextEditorViewModel.swift in Sources */,
 				5CCE9575C4252C18D13E415F /* EditorsCoordinator.swift in Sources */,
-				5CCE9EB6FA76BDC0B3AECD0B /* LocalReactiveAccountsDataSource.swift in Sources */,
+				5CCE9EB6FA76BDC0B3AECD0B /* LocalAccountsDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

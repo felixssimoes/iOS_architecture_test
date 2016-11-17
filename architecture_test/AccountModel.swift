@@ -25,7 +25,7 @@ protocol AccountsDataStore {
     func delete(account: AccountModel) throws
 }
 
-protocol ReactiveAccountsDataSource {
+protocol AccountsDataSource {
     func allAccounts() -> Observable<[AccountModel]>
     func addAccount(withName: String) -> Observable<AccountModel>
     func update(account: AccountModel) -> Observable<Void>

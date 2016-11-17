@@ -29,7 +29,7 @@ class MemoryDataSource: DataSource {
         return LocalTransactionsDataSource(account: account, dataStore: dataSource)
     }
 
-    func reactiveAccounts() -> ReactiveAccountsDataSource {
-        return LocalReactiveAccountsDataSource(dataStore: dataSource)
+    func accounts() -> AccountsDataSource {
+        return LocalAccountsDataSource(dataStore: dataSource)
     }
 }

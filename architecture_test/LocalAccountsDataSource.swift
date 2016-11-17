@@ -5,7 +5,7 @@
 import Foundation
 import RxSwift
 
-class LocalReactiveAccountsDataSource {
+class LocalAccountsDataSource {
     fileprivate let dataStore: DataStore
 
     init(dataStore: DataStore) {
@@ -13,7 +13,7 @@ class LocalReactiveAccountsDataSource {
     }
 }
 
-extension LocalReactiveAccountsDataSource: ReactiveAccountsDataSource {
+extension LocalAccountsDataSource: AccountsDataSource {
     func allAccounts() -> Observable<[AccountModel]> {
         return Observable.create { observer in
             do {
