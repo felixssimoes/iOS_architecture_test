@@ -25,7 +25,7 @@ class AccountsCoordinator {
     
     private func showAccountsList() {
         let vc = storyboard.instantiateViewController(withIdentifier: "AccountsList") as! AccountsListViewController
-        vc.viewModel = AccountsListViewModel(accountsDataProvider: dataSource.accounts())
+        vc.viewModel = AccountsListViewModel(dataSource: dataSource)
         vc.navigation = AccountsListNavigation(onNewAccount: {
             self.showDetail(forAccount: nil)
         }, onSelectAccount: { account in
@@ -41,8 +41,7 @@ class AccountsCoordinator {
         let vc = storyboard.instantiateViewController(withIdentifier: "AccountDetail") as! AccountDetailViewController
         let nc = UINavigationController(rootViewController: vc)
         
-        vc.viewModel = AccountDetailViewModel(account: account,
-                                              accountsDataProvider: dataSource.accounts())
+        vc.viewModel = AccountDetailViewModel(account: account, dataSource: dataSource)
         vc.navigation = AccountDetailNavigation(onSave: {
             nc.dismiss(animated: true, completion: nil)
         }, onCancel: {

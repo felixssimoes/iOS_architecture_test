@@ -4,32 +4,30 @@
 //
 
 import Foundation
+import RxSwift
 
 class AccountDetailViewModel {
-    private let dataProvider: AccountsDataSource
+    private let dataSource: DataSource
     private var account: AccountModel?
 
     var name: String
 
-    init(account: AccountModel?, accountsDataProvider: AccountsDataSource) {
-        self.dataProvider = accountsDataProvider
+    init(account: AccountModel?, dataSource: DataSource) {
+        self.dataSource = dataSource
         self.account = account
         self.name = account?.name ?? ""
     }
 
     var saveCallback: (() -> Void)?
-    func saveAccount(completion: @escaping (Result<Void, AccountError>) -> Void) {
+
+    func reactiveSaveAccount() -> Observable<Void> {
         if var account = account {
             account.name = name
-            dataProvider.update(account: account, completion: completion)
+            return dataSource.reactiveAccounts().update(account: account)
         } else {
-            dataProvider.addAccount(withName: name) { result in
-                switch result {
-                case .success: completion(.success())
-                case .failure(let error): completion(.failure(error))
-                }
+            return dataSource.reactiveAccounts().addAccount(withName: name).flatMap { account -> Observable<Void> in
+                return Observable.just()
             }
         }
-
     }
 }

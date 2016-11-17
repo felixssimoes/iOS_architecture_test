@@ -5,6 +5,6 @@
 import Foundation
 
 protocol DataSource {
-    func accounts() -> AccountsDataSource
     func transactions(forAccount: AccountModel) -> TransactionsDataSource
+    func reactiveAccounts() -> ReactiveAccountsDataSource
 }

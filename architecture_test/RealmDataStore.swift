@@ -26,12 +26,11 @@ class RealmDataStore: DataStore {
 class RealmDataSource: DataSource {
     private let dataStore = RealmDataStore()
 
-    func accounts() -> AccountsDataSource {
-        return LocalAccountsDataSource(dataStore: dataStore)
-    }
-
     func transactions(forAccount account: AccountModel) -> TransactionsDataSource {
         return LocalTransactionsDataSource(account: account, dataStore: dataStore)
     }
 
+    func reactiveAccounts() -> ReactiveAccountsDataSource {
+        return LocalReactiveAccountsDataSource(dataStore: dataStore)
+    }
 }

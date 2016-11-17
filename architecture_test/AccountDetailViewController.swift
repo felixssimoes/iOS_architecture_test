@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 struct AccountDetailNavigation {
     var onSave: (() -> Void)?
@@ -29,12 +30,13 @@ class AccountDetailViewController: UIViewController {
 
     @IBAction func didSelectSaveButton() {
         viewModel.name = nameField.text ?? ""
-        viewModel.saveAccount { (result) in
-            switch result {
-            case .success: self.navigation?.onSave?()
-            case .failure(let error): print(error)
-            }
-        }
+        viewModel.reactiveSaveAccount()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                self.navigation?.onSave?()
+            }, onError: { error in
+                print(error)
+            }).dispose()
     }
 
     @IBAction func didSelectCancelButton() {

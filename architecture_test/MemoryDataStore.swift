@@ -25,11 +25,11 @@ class MemoryDataStore: DataStore {
 class MemoryDataSource: DataSource {
     let dataSource = MemoryDataStore()
 
-    func accounts() -> AccountsDataSource {
-        return LocalAccountsDataSource(dataStore: dataSource)
-    }
-
     func transactions(forAccount account: AccountModel) -> TransactionsDataSource {
         return LocalTransactionsDataSource(account: account, dataStore: dataSource)
+    }
+
+    func reactiveAccounts() -> ReactiveAccountsDataSource {
+        return LocalReactiveAccountsDataSource(dataStore: dataSource)
     }
 }

@@ -52,14 +52,14 @@ final class RealmAccountsDataStore: AccountsDataStore {
     }
 
     func update(account: AccountModel) throws {
-        guard let object = findAccountObject(fromModel: account) else { throw AccountError.other }
+        guard let object = findAccountObject(fromModel: account) else { throw AccountError.accountNotFound }
         try realm.write {
             object.name = account.name
         }
     }
 
     func delete(account: AccountModel) throws {
-        guard let object = findAccountObject(fromModel: account) else { throw AccountError.other }
+        guard let object = findAccountObject(fromModel: account) else { throw AccountError.accountNotFound }
         try realm.write {
             realm.delete(object)
         }

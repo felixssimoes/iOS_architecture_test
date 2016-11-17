@@ -6,13 +6,12 @@
 import Foundation
 import RxSwift
 
-
 class AccountsListViewModel {
-    private let dataProvider: AccountsDataSource
+    private let dataSource: DataSource
     private var accounts: [AccountModel] = []
 
-    init(accountsDataProvider: AccountsDataSource) {
-        dataProvider = accountsDataProvider
+    init(dataSource: DataSource) {
+        self.dataSource = dataSource
     }
 
     var numberOfAccounts: Int {
@@ -24,32 +23,11 @@ class AccountsListViewModel {
         return accounts[index]
     }
 
-    func reloadData(completion: @escaping (Result<Void, AccountError>) -> Void) {
-        dataProvider.allAccounts { result in
-            switch result {
-            case .success(let accounts):
+    func reactiveReloadData() -> Observable<Void> {
+        return dataSource.reactiveAccounts().allAccounts()
+            .flatMap { accounts -> Observable<Void> in
                 self.accounts = accounts
-                completion(.success())
-            case .failure(let error):
-                completion(.failure(error))
+                return Observable.just()
             }
-        }
-    }
-
-    func reactiveReloadData() -> Observable<[AccountModel]> {
-        return Observable.create { observer in
-            self.dataProvider.allAccounts { result in
-                switch result {
-                case .success(let accounts):
-                    self.accounts = accounts
-                    observer.on(.next(self.accounts))
-                    observer.on(.completed)
-                case .failure(let error):
-                    observer.on(.error(error))
-                }
-            }
-
-            return Disposables.create()
-        }
     }
 }

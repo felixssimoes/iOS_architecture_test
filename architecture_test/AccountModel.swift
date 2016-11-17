@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import RxSwift
 
 enum AccountError: Error {
     case invalidName
@@ -24,9 +25,9 @@ protocol AccountsDataStore {
     func delete(account: AccountModel) throws
 }
 
-protocol AccountsDataSource {
-    func allAccounts(completion: @escaping (Result<[AccountModel], AccountError>) -> Void)
-    func addAccount(withName name: String, completion: @escaping (Result<AccountModel, AccountError>) -> Void)
-    func update(account: AccountModel, completion: @escaping (Result<Void, AccountError>) -> Void)
-    func deleteAccount(account: AccountModel, completion: @escaping (Result<Void, AccountError>) -> Void)
+protocol ReactiveAccountsDataSource {
+    func allAccounts() -> Observable<[AccountModel]>
+    func addAccount(withName: String) -> Observable<AccountModel>
+    func update(account: AccountModel) -> Observable<Void>
+    func delete(account: AccountModel) -> Observable<Void>
 }
