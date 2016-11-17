@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 struct TransactionsListNavigation {
     var onNewTransaction: (() -> Void)?
@@ -27,14 +28,15 @@ class TransactionsListViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.reloadData { result in
-            switch result {
-            case .success: self.tableView.reloadData()
-            case .failure(let e): print(e)
-            }
-        }
+        viewModel.reloadData()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                self.tableView.reloadData()
+            }, onError: { error in
+                print(error)
+            }).dispose()
     }
-    
+
     // MARK: - Actions
     
     @IBAction func didSelectAddButton() {

@@ -4,6 +4,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 struct TransactionDetailNavigation {
     var onSave:(() -> Void)?
@@ -52,12 +53,13 @@ class TransactionDetailViewController: UITableViewController {
 
     @IBAction func didSelectSaveButton() {
         viewModel.amount = Decimal(arc4random() % 100)
-        viewModel.save { result in
-            switch result {
-            case .success: self.navigation?.onSave?()
-            case .failure(let error): print(error)
-            }
-        }
+        viewModel.save()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                self.navigation?.onSave?()
+            }, onError: { error in
+                print(error)
+            }).dispose()
     }
 
     // MARK: - Table view

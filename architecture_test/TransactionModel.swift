@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 enum TransactionError: Error {
     case invalidAmount
@@ -34,11 +35,8 @@ protocol TransactionsDataStore {
 }
 
 protocol TransactionsDataSource {
-    func allTransactions(completion: @escaping (Result<[TransactionModel], TransactionError>) -> Void)
-    func addTransaction(withCategory: String,
-                        date: Date,
-                        amount: Decimal,
-                        completion: @escaping (Result<TransactionModel, TransactionError>) -> Void)
-    func update(transaction: TransactionModel, completion: @escaping (Result<Void, TransactionError>) -> Void)
-    func delete(transaction: TransactionModel, completion: @escaping (Result<Void, TransactionError>) -> Void)
+    func allTransactions() -> Observable<[TransactionModel]>
+    func addTransaction(withCategory: String, date: Date, amount: Decimal) -> Observable<TransactionModel>
+    func update(transaction: TransactionModel) -> Observable<Void>
+    func delete(transaction: TransactionModel) -> Observable<Void>
 }

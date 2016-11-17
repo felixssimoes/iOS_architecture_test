@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class TransactionsListViewModel {
     private let dataSource: DataSource
@@ -31,16 +32,11 @@ class TransactionsListViewModel {
         return transactions[index]
     }
     
-    func reloadData(completion: @escaping (Result<Void, TransactionError>) -> Void) {
-        dataSource.transactions(forAccount: account).allTransactions { result in
-            switch result {
-            case.success(let transactions):
+    func reloadData() -> Observable<Void> {
+        return dataSource.transactions(forAccount: account).allTransactions()
+            .flatMap { transactions -> Observable<Void> in
                 self.transactions = transactions
-                completion(.success())
-            
-            case .failure(let e):
-                completion(.failure(e))
-            }
+                return Observable.just()
         }
     }
 }

@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class TransactionDetailViewModel {
     private let dataSource: DataSource
@@ -23,6 +24,10 @@ class TransactionDetailViewModel {
         self.dataSource = dataStore
         self.transaction = transaction
         self.account = transaction.account
+
+        self.category = transaction.category
+        self.date = transaction.date
+        self.amount = transaction.amount
     }
 
     init(account: AccountModel, dataStore: DataSource) {
@@ -31,34 +36,30 @@ class TransactionDetailViewModel {
         self.account = account
     }
 
-    func save(completion: @escaping (Result<Void, TransactionError>) -> Void) {
+    func save() -> Observable<Void> {
         if transaction == nil {
-            addNewTransaction(completion: completion)
+            return addNewTransaction()
         } else {
-            updateCurrentTransaction(completion: completion)
+            return updateCurrentTransaction()
         }
     }
 
-    private func addNewTransaction(completion: @escaping (Result<Void, TransactionError>) -> Void) {
-        dataSource.transactions(forAccount: account).addTransaction(
-                        withCategory: category,
-                        date: date,
-                        amount: amount) { result in
-            switch result {
-            case .success(let newTransaction):
-                self.transaction = newTransaction
-                completion(.success())
-            case .failure(let e): completion(.failure(e))
-            }
+    private func addNewTransaction() -> Observable<Void> {
+        return dataSource.transactions(forAccount: account)
+            .addTransaction(withCategory: category, date: date, amount: amount)
+            .flatMap { transaction -> Observable<Void> in
+                self.transaction = transaction
+                return Observable.just()
         }
     }
 
-    private func updateCurrentTransaction(completion: @escaping (Result<Void, TransactionError>) -> Void) {
-        guard var transaction = self.transaction else { return }
+    private func updateCurrentTransaction() -> Observable<Void> {
+        guard var transaction = self.transaction else { return Observable.just() }
+
         transaction.category = category
         transaction.date = date
         transaction.amount = amount
 
-        dataSource.transactions(forAccount: account).update(transaction: transaction, completion: completion)
+        return dataSource.transactions(forAccount: account).update(transaction: transaction)
     }
 }

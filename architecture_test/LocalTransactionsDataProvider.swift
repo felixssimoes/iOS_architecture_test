@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class LocalTransactionsDataSource: TransactionsDataSource {
     private let dataStore: DataStore
@@ -14,74 +15,81 @@ class LocalTransactionsDataSource: TransactionsDataSource {
         self.dataStore = dataStore
     }
     
-    func allTransactions(completion: @escaping (Result<[TransactionModel], TransactionError>) -> Void) {
-        do {
-            let transactions = try dataStore.transactions().all(forAccount: account)
-            completion(.success(transactions))
-        } catch(let e as TransactionError) {
-            completion(.failure(e))
-        } catch {
-            completion(.failure(.other))
+    func allTransactions() -> Observable<[TransactionModel]> {
+        return Observable.create { observer in
+            do {
+                observer.onNext(try self.dataStore.transactions().all(forAccount: self.account))
+                observer.onCompleted()
+            } catch(let e as TransactionError) {
+                observer.onError(e)
+            } catch {
+                observer.onError(TransactionError.other)
+            }
+            return Disposables.create()
         }
     }
-    
-    func addTransaction(withCategory category: String, date: Date, amount: Decimal, completion: @escaping (Result<TransactionModel, TransactionError>) -> Void) {
+
+    func addTransaction(withCategory category: String, date: Date, amount: Decimal) -> Observable<TransactionModel> {
         guard !category.isEmpty else {
-            completion(.failure(.invalidCategory))
-            return
+            return Observable.error(TransactionError.invalidCategory)
         }
         guard amount > 0 else {
-            completion(.failure(.invalidAmount))
-            return
+            return Observable.error(TransactionError.invalidAmount)
         }
         
-        do {
-            var transaction = try dataStore.transactions().newTransaction(forAccount: account)
-            transaction.category = category
-            transaction.date = date
-            transaction.amount = amount
-            
-            try dataStore.transactions().add(transaction: transaction)
-            completion(.success(transaction))
-        
-        } catch(let e as TransactionError) {
-            completion(.failure(e))
-        } catch {
-            completion(.failure(.other))
+        return Observable.create { observer in
+            do {
+                var transaction = try self.dataStore.transactions().newTransaction(forAccount: self.account)
+                transaction.category = category
+                transaction.date = date
+                transaction.amount = amount
+
+                try self.dataStore.transactions().add(transaction: transaction)
+                observer.onNext(transaction)
+                observer.onCompleted()
+            } catch(let e as TransactionError) {
+                observer.onError(e)
+            } catch {
+                observer.onError(TransactionError.other)
+            }
+            return Disposables.create()
         }
     }
     
-    func update(transaction: TransactionModel, completion: @escaping (Result<Void, TransactionError>) -> Void) {
+    func update(transaction: TransactionModel) -> Observable<Void> {
         guard !transaction.category.isEmpty else {
-            completion(.failure(.invalidCategory))
-            return
+            return Observable.error(TransactionError.invalidCategory)
         }
         guard transaction.amount > 0 else {
-            completion(.failure(.invalidAmount))
-            return
+            return Observable.error(TransactionError.invalidAmount)
         }
-        
-        do {
-            try dataStore.transactions().update(transaction: transaction)
-            completion(.success())
-            
-        } catch(let e as TransactionError) {
-            completion(.failure(e))
-        } catch {
-            completion(.failure(.other))
+
+        return Observable.create { observer in
+            do {
+                try self.dataStore.transactions().update(transaction: transaction)
+                observer.onNext()
+                observer.onCompleted()
+            } catch(let e as TransactionError) {
+                observer.onError(e)
+            } catch {
+                observer.onError(TransactionError.other)
+            }
+            return Disposables.create()
         }
     }
     
-    func delete(transaction: TransactionModel, completion: @escaping (Result<Void, TransactionError>) -> Void) {
-        do {
-            try dataStore.transactions().delete(transaction: transaction)
-            completion(.success())
-            
-        } catch(let e as TransactionError) {
-            completion(.failure(e))
-        } catch {
-            completion(.failure(.other))
+    func delete(transaction: TransactionModel) -> Observable<Void> {
+        return Observable.create { observer in
+            do {
+                try self.dataStore.transactions().delete(transaction: transaction)
+                observer.onNext()
+                observer.onCompleted()
+            } catch(let e as TransactionError) {
+                observer.onError(e)
+            } catch {
+                observer.onError(TransactionError.other)
+            }
+            return Disposables.create()
         }
-        
     }
 }
