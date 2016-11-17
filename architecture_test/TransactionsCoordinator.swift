@@ -29,12 +29,12 @@ class TransactionsCoordinator {
     private func showTransactionsList() {
         let vc = storyboard.instantiateViewController(withIdentifier: "TransactionsList") as! TransactionsListViewController
         vc.viewModel = TransactionsListViewModel(account: account, dataStore: dataSource)
-        vc.viewModel.newTransactionCallback = {
+        vc.navigation = TransactionsListNavigation(onNewTransaction: {
             self.showNewTransaction()
-        }
-        vc.viewModel.selectTransactionCallback = { transaction in
+        }, onSelectTransaction: { transaction in
             self.showDetail(forTransaction: transaction)
-        }
+        })
+
         navigationController.pushViewController(vc, animated: true)
     }
 
@@ -42,12 +42,21 @@ class TransactionsCoordinator {
         let vc = storyboard.instantiateViewController(withIdentifier: "TransactionDetail") as! TransactionDetailViewController
 
         vc.viewModel = TransactionDetailViewModel(transaction: transaction, dataStore: dataSource)
-        vc.viewModel.cancelCallback = {
+        vc.navigation = TransactionDetailNavigation(onSave: {
             self.navigationController.popViewController(animated: true)
-        }
-        vc.viewModel.saveCallback = {
+        }, onCancel: {
             self.navigationController.popViewController(animated: true)
-        }
+        }, onEditCategory: { category in
+            let value = TextValue(label: "Category", value: category)
+            let c = EditorsCoordinator(navigationController: self.navigationController)
+            c.startTextEditor(value: value) { category in
+                vc.viewModel.category = category
+            }
+        }, onEditDate: { date in
+
+        }, onEditAmount: { decimal in
+
+        })
 
         navigationController.pushViewController(vc, animated: true)
     }
@@ -57,12 +66,21 @@ class TransactionsCoordinator {
         let nc = UINavigationController(rootViewController: vc)
 
         vc.viewModel = TransactionDetailViewModel(account: account, dataStore: dataSource)
-        vc.viewModel.cancelCallback = {
+        vc.navigation = TransactionDetailNavigation(onSave: {
             nc.dismiss(animated: true)
-        }
-        vc.viewModel.saveCallback = {
+        }, onCancel: {
             nc.dismiss(animated: true)
-        }
+        }, onEditCategory: { category in
+            let value = TextValue(label: "Category", value: category)
+            let c = EditorsCoordinator(navigationController: nc)
+            c.startTextEditor(value: value) { category in
+                vc.viewModel.category = category
+            }
+        }, onEditDate: { date in
+
+        }, onEditAmount: { decimal in
+            
+        })
 
         navigationController.present(nc, animated: true)
     }

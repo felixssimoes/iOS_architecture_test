@@ -6,36 +6,29 @@ import Foundation
 
 class TransactionDetailViewModel {
     private let dataSource: DataSource
-    private let transaction: TransactionModel?
     private let account: AccountModel
+    private var transaction: TransactionModel? {
+        didSet {
+            self.category = transaction?.category ?? ""
+            self.date = transaction?.date ?? Date()
+            self.amount = transaction?.amount ?? 0
+        }
+    }
 
-    var category: String
-    var date: Date
-    var amount: Decimal
+    var category: String = ""
+    var date: Date = Date()
+    var amount: Decimal = 0
 
     init(transaction: TransactionModel, dataStore: DataSource) {
         self.dataSource = dataStore
         self.transaction = transaction
         self.account = transaction.account
-        self.category = transaction.category
-        self.date = transaction.date
-        self.amount = transaction.amount
     }
 
     init(account: AccountModel, dataStore: DataSource) {
         self.dataSource = dataStore
         self.transaction = nil
         self.account = account
-        self.category = ""
-        self.date = Date()
-        self.amount = 0
-    }
-
-    var saveCallback:(() -> Void)?
-    var cancelCallback:(() -> Void)?
-
-    func cancel() {
-        cancelCallback?()
     }
 
     func save(completion: @escaping (Result<Void, TransactionError>) -> Void) {
@@ -52,7 +45,9 @@ class TransactionDetailViewModel {
                         date: date,
                         amount: amount) { result in
             switch result {
-            case .success: self.saveCallback?()
+            case .success(let newTransaction):
+                self.transaction = newTransaction
+                completion(.success())
             case .failure(let e): completion(.failure(e))
             }
         }
@@ -64,11 +59,6 @@ class TransactionDetailViewModel {
         transaction.date = date
         transaction.amount = amount
 
-        dataSource.transactions(forAccount: account).update(transaction: transaction) { result in
-            switch result {
-            case .success: self.saveCallback?()
-            case .failure(let e): completion(.failure(e))
-            }
-        }
+        dataSource.transactions(forAccount: account).update(transaction: transaction, completion: completion)
     }
 }

@@ -26,16 +26,14 @@ class AccountsCoordinator {
     private func showAccountsList() {
         let vc = storyboard.instantiateViewController(withIdentifier: "AccountsList") as! AccountsListViewController
         vc.viewModel = AccountsListViewModel(accountsDataProvider: dataSource.accounts())
-        vc.viewModel.selectAccountCallback = { account in
-            self.showTransactions(forAccount: account)
-        }
-        vc.viewModel.selectAccountDetailCallback = { account in
-            self.showDetail(forAccount: account)
-        }
-        vc.viewModel.addAccountCallback = {
+        vc.navigation = AccountsListNavigation(onNewAccount: {
             self.showDetail(forAccount: nil)
-        }
-        
+        }, onSelectAccount: { account in
+            self.showTransactions(forAccount: account)
+        }, onShowDetailsForAccount: { account in
+            self.showDetail(forAccount: account)
+        })
+
         navigationController.viewControllers = [vc]
     }
     
@@ -43,17 +41,17 @@ class AccountsCoordinator {
         let vc = storyboard.instantiateViewController(withIdentifier: "AccountDetail") as! AccountDetailViewController
         let nc = UINavigationController(rootViewController: vc)
         
-        vc.viewModel = AccountDetailViewModel(account: account, accountsDataProvider: dataSource.accounts())
-        vc.viewModel.cancelCallback = {
+        vc.viewModel = AccountDetailViewModel(account: account,
+                                              accountsDataProvider: dataSource.accounts())
+        vc.navigation = AccountDetailNavigation(onSave: {
             nc.dismiss(animated: true, completion: nil)
-        }
-        vc.viewModel.saveCallback = {
+        }, onCancel: {
             nc.dismiss(animated: true, completion: nil)
-        }
-        
+        })
+
         navigationController.present(nc, animated: true, completion: nil)
     }
-    
+
     private func showTransactions(forAccount account: AccountModel) {
         let transactionsCoordinator = TransactionsCoordinator(account: account, navigationController: navigationController, dataSource: dataSource)
         transactionsCoordinator.start()

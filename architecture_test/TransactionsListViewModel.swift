@@ -43,15 +43,4 @@ class TransactionsListViewModel {
             }
         }
     }
-    
-    var newTransactionCallback: (() -> Void)?
-    func newTransaction() {
-        newTransactionCallback?()
-    }
-
-    var selectTransactionCallback: ((TransactionModel) -> Void)?
-    func selectTransaction(at index: Int) {
-        guard index < numberOfTransactions else { return }
-        selectTransactionCallback?(transactions[index])
-    }
 }

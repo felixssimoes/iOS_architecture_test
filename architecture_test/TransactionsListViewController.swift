@@ -9,8 +9,14 @@
 import Foundation
 import UIKit
 
+struct TransactionsListNavigation {
+    var onNewTransaction: (() -> Void)?
+    var onSelectTransaction: ((TransactionModel) -> Void)?
+}
+
 class TransactionsListViewController: UITableViewController {
     var viewModel: TransactionsListViewModel!
+    var navigation: TransactionsListNavigation?
     
     // MARK: - View controller lifecycle
     
@@ -32,7 +38,7 @@ class TransactionsListViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func didSelectAddButton() {
-        viewModel.newTransaction()
+        navigation?.onNewTransaction?()
     }
     
     // MARK: - Table view
@@ -50,7 +56,9 @@ class TransactionsListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.selectTransaction(at: indexPath.row)
+        if let t = viewModel.transaction(at: indexPath.row) {
+            navigation?.onSelectTransaction?(t)
+        }
     }
 
 }

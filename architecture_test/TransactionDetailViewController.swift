@@ -5,6 +5,15 @@
 import Foundation
 import UIKit
 
+struct TransactionDetailNavigation {
+    var onSave:(() -> Void)?
+    var onCancel:(() -> Void)?
+
+    var onEditCategory: ((String) -> Void)?
+    var onEditDate: ((Date) -> Void)?
+    var onEditAmount: ((Decimal) -> Void)?
+}
+
 class TransactionDetailViewController: UITableViewController {
 
     private enum DetailSections: Int {
@@ -26,19 +35,27 @@ class TransactionDetailViewController: UITableViewController {
     }
 
     var viewModel: TransactionDetailViewModel!
+    var navigation: TransactionDetailNavigation?
+
+    // MARK: - View controller lifecycle
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
 
     // MARK: - Actions
 
     @IBAction func didSelectCancelButton() {
-        viewModel.cancel()
+        navigation?.onCancel?()
     }
 
     @IBAction func didSelectSaveButton() {
-        viewModel.category = "The Category"
         viewModel.amount = Decimal(arc4random() % 100)
         viewModel.save { result in
-            if case .failure(let error) = result {
-                print(error)
+            switch result {
+            case .success: self.navigation?.onSave?()
+            case .failure(let error): print(error)
             }
         }
     }
@@ -63,6 +80,14 @@ class TransactionDetailViewController: UITableViewController {
         case .amount: cell.textLabel?.text = String(describing: viewModel.amount)
         }
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailSection = DetailSections(rawValue: indexPath.section) else { fatalError() }
+        switch detailSection {
+        case .category: navigation?.onEditCategory?(viewModel.category)
+        default: break
+        }
     }
 
 }
