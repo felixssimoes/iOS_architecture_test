@@ -13,6 +13,7 @@ enum TransactionError: Error {
     case invalidDate
     case invalidCategory
     case transactionNotFound
+    case accountNotFound
     case other
 }
 
