@@ -47,14 +47,14 @@ class RealmTransactionsDataStore: TransactionsDataStore {
     }
 
     func newTransaction(forAccount account: AccountModel) throws -> TransactionModel {
-        guard let accountObject = findAccountObject(fromModel: account) else { throw TransactionError.other }
+        guard let accountObject = findAccountObject(fromModel: account) else { throw TransactionError.accountNotFound }
         let transaction = RealmTransactionObject()
         transaction.account = accountObject
         return TransactionModel(transactionObject: transaction)
     }
 
     func add(transaction: TransactionModel) throws {
-        guard let accountObject = findAccountObject(fromModel: transaction.account) else { throw TransactionError.other }
+        guard let accountObject = findAccountObject(fromModel: transaction.account) else { throw TransactionError.accountNotFound }
         let object = RealmTransactionObject.object(fromModel: transaction, accountObject: accountObject)
         try realm.write {
             realm.add(object)
