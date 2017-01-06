@@ -105,10 +105,11 @@
 		5CCE91F026819FDBAD4CEBED /* Data Source */ = {
 			isa = PBXGroup;
 			children = (
-				5CCE91BDDCD3436E41D683F2 /* LocalTransactionsDataProvider.swift */,
 				5CCE938B718B6BE9D21838E4 /* LocalAccountsDataSource.swift */,
+				5CCE91BDDCD3436E41D683F2 /* LocalTransactionsDataProvider.swift */,
 			);
 			name = "Data Source";
+			path = "Data Source";
 			sourceTree = "<group>";
 		};
 		5CCE931475B72D9C0781E93F /* Editors */ = {
@@ -117,35 +118,39 @@
 				5CCE9813A24F89240F40FB34 /* TextEditorViewModel.swift */,
 			);
 			name = Editors;
+			path = Editors;
 			sourceTree = "<group>";
 		};
 		5CCE95823104716BE719783A /* Realm Data Store */ = {
 			isa = PBXGroup;
 			children = (
-				5CCE9B7BF7CED953A668A35C /* RealmDataStore.swift */,
 				5CCE9CC95CEC705464343B70 /* RealmAccountsDataStore.swift */,
+				5CCE9B7BF7CED953A668A35C /* RealmDataStore.swift */,
 				5CCE91C99268D3AA38AE36A4 /* RealmTransactionsDataStore.swift */,
 			);
 			name = "Realm Data Store";
+			path = "Realm Data Store";
 			sourceTree = "<group>";
 		};
 		5CCE9594B4205F2354AF8A54 /* Editors */ = {
 			isa = PBXGroup;
 			children = (
-				5CCE9B26135B98599BA2DB99 /* TextEditorViewController.swift */,
 				DCE1093B1DD895C800F8B68B /* Editors.storyboard */,
+				5CCE9B26135B98599BA2DB99 /* TextEditorViewController.swift */,
 			);
 			name = Editors;
+			path = Editors;
 			sourceTree = "<group>";
 		};
 		5CCE9E6D991677CD5AAA201E /* Memory Data Store */ = {
 			isa = PBXGroup;
 			children = (
 				5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */,
-				5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataStore.swift */,
 				5CCE941074C7F3BC91748A11 /* MemoryDataStore.swift */,
+				5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataStore.swift */,
 			);
 			name = "Memory Data Store";
+			path = "Memory Data Store";
 			sourceTree = "<group>";
 		};
 		D13ADE9FFA1A430B8BB31CF8 /* Pods */ = {
@@ -160,10 +165,10 @@
 		DC16BC571DC3A280005FBDC2 = {
 			isa = PBXGroup;
 			children = (
-				DC16BC621DC3A280005FBDC2 /* architecture_test */,
-				DC16BC611DC3A280005FBDC2 /* Products */,
-				D13ADE9FFA1A430B8BB31CF8 /* Pods */,
 				4AF8FC7366DB4BAAB70591CB /* Frameworks */,
+				D13ADE9FFA1A430B8BB31CF8 /* Pods */,
+				DC16BC611DC3A280005FBDC2 /* Products */,
+				DC16BC621DC3A280005FBDC2 /* architecture_test */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,14 +183,14 @@
 		DC16BC621DC3A280005FBDC2 /* architecture_test */ = {
 			isa = PBXGroup;
 			children = (
-				DC3B443A1DC52F11006C8805 /* Coordinators */,
 				DC16BC781DC3A2AD005FBDC2 /* Application */,
-				DC16BC7B1DC3A319005FBDC2 /* Models */,
-				DC16BC791DC3A2E3005FBDC2 /* View Models */,
-				DC16BC751DC3A296005FBDC2 /* Views */,
+				DC3B443A1DC52F11006C8805 /* Coordinators */,
 				DC16BC801DC3A46C005FBDC2 /* Helpers */,
+				DC16BC7B1DC3A319005FBDC2 /* Models */,
 				DC16BC761DC3A29C005FBDC2 /* Resources */,
 				DC16BC771DC3A2A4005FBDC2 /* Support Files */,
+				DC16BC791DC3A2E3005FBDC2 /* View Models */,
+				DC16BC751DC3A296005FBDC2 /* Views */,
 			);
 			path = architecture_test;
 			sourceTree = "<group>";
@@ -194,11 +199,12 @@
 			isa = PBXGroup;
 			children = (
 				DC99C5391DC4D25E00EC071B /* Accounts */,
-				DC4FCD211DC6B563007D28AE /* Transactions */,
 				5CCE9594B4205F2354AF8A54 /* Editors */,
+				DC4FCD211DC6B563007D28AE /* Transactions */,
 				DC16BC6C1DC3A280005FBDC2 /* LaunchScreen.storyboard */,
 			);
 			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		DC16BC761DC3A29C005FBDC2 /* Resources */ = {
@@ -207,6 +213,7 @@
 				DC16BC6A1DC3A280005FBDC2 /* Assets.xcassets */,
 			);
 			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		DC16BC771DC3A2A4005FBDC2 /* Support Files */ = {
@@ -215,6 +222,7 @@
 				DC16BC6F1DC3A280005FBDC2 /* Info.plist */,
 			);
 			name = "Support Files";
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 		DC16BC781DC3A2AD005FBDC2 /* Application */ = {
@@ -223,30 +231,33 @@
 				DC16BC631DC3A280005FBDC2 /* AppDelegate.swift */,
 			);
 			name = Application;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		DC16BC791DC3A2E3005FBDC2 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
 				DC4FCD201DC6B559007D28AE /* Accounts */,
-				DC4FCD221DC6B577007D28AE /* Transactions */,
 				5CCE931475B72D9C0781E93F /* Editors */,
+				DC4FCD221DC6B577007D28AE /* Transactions */,
 			);
 			name = "View Models";
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		DC16BC7B1DC3A319005FBDC2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5CCE9E6D991677CD5AAA201E /* Memory Data Store */,
 				5CCE91F026819FDBAD4CEBED /* Data Source */,
+				5CCE9E6D991677CD5AAA201E /* Memory Data Store */,
 				5CCE95823104716BE719783A /* Realm Data Store */,
 				5CCE9DC8DB6961C52CF98953 /* AccountModel.swift */,
-				5CCE9C1405401E60E34B7E90 /* TransactionModel.swift */,
 				5CCE9B5A9DC417866F31ACAE /* DataSource.swift */,
 				5CCE9D010BF50BC826445D35 /* DataStore.swift */,
+				5CCE9C1405401E60E34B7E90 /* TransactionModel.swift */,
 			);
 			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DC16BC801DC3A46C005FBDC2 /* Helpers */ = {
@@ -255,54 +266,60 @@
 				DC16BC811DC3A47C005FBDC2 /* Result.swift */,
 			);
 			name = Helpers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		DC3B443A1DC52F11006C8805 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				DC3B443B1DC52F24006C8805 /* AccountsCoordinator.swift */,
-				DCEF6A181DC76090000EF33E /* TransactionsCoordinator.swift */,
 				5CCE9052D7A5456B13E26CD2 /* EditorsCoordinator.swift */,
+				DCEF6A181DC76090000EF33E /* TransactionsCoordinator.swift */,
 			);
 			name = Coordinators;
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		DC4FCD201DC6B559007D28AE /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
-				DC16BC871DC3BA16005FBDC2 /* AccountsListViewModel.swift */,
 				DC16BC8D1DC3D009005FBDC2 /* AccountDetailViewModel.swift */,
+				DC16BC871DC3BA16005FBDC2 /* AccountsListViewModel.swift */,
 			);
 			name = Accounts;
+			path = Accounts;
 			sourceTree = "<group>";
 		};
 		DC4FCD211DC6B563007D28AE /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
+				5CCE9D0B07DFF73D9CC49C5E /* TransactionDetailViewController.swift */,
 				DC4FCD271DC6B883007D28AE /* Transactions.storyboard */,
 				DC4FCD231DC6B5EC007D28AE /* TransactionsListViewController.swift */,
-				5CCE9D0B07DFF73D9CC49C5E /* TransactionDetailViewController.swift */,
 			);
 			name = Transactions;
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 		DC4FCD221DC6B577007D28AE /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
-				DC4FCD251DC6B60F007D28AE /* TransactionsListViewModel.swift */,
 				5CCE9617B7FC42ABD575C218 /* TransactionDetailViewModel.swift */,
+				DC4FCD251DC6B60F007D28AE /* TransactionsListViewModel.swift */,
 			);
 			name = Transactions;
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 		DC99C5391DC4D25E00EC071B /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */,
 				DC99C53A1DC4D27500EC071B /* Accounts.storyboard */,
 				DC16BC891DC3BB8B005FBDC2 /* AccountsListViewController.swift */,
-				DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */,
 			);
 			name = Accounts;
+			path = Accounts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +486,7 @@
 				DC16BC6D1DC3A280005FBDC2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -571,7 +589,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7S43ELA7C6;
-				INFOPLIST_FILE = architecture_test/Info.plist;
+				INFOPLIST_FILE = "architecture_test/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.felixssimoes.architecture-test";
@@ -586,7 +604,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7S43ELA7C6;
-				INFOPLIST_FILE = architecture_test/Info.plist;
+				INFOPLIST_FILE = "architecture_test/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.felixssimoes.architecture-test";
