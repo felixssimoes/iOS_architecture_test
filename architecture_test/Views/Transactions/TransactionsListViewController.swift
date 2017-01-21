@@ -15,8 +15,15 @@ struct TransactionsListNavigation {
 }
 
 class TransactionsListViewController: UITableViewController {
-    var viewModel: TransactionsListViewModel!
+    private (set) var viewModel: TransactionsListViewModel!
     var navigation: TransactionsListNavigation?
+    
+    static func new(viewModel: TransactionsListViewModel) -> TransactionsListViewController {
+        let sb = UIStoryboard(name: "Transactions", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "TransactionsList") as! TransactionsListViewController
+        vc.viewModel = viewModel
+        return vc
+    }
     
     // MARK: - View controller lifecycle
     

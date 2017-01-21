@@ -19,15 +19,14 @@ class EditorsCoordinator {
     }
 
     private let navigationController: UINavigationController
-    private let storyboard = UIStoryboard(name: StoryboardConstants.name, bundle: nil)
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
 
     func startTextEditor(value: TextValue, completion: @escaping (String) -> Void) {
-        let vc = storyboard.instantiateViewController(withIdentifier: StoryboardConstants.textEditorIdentifier) as! TextEditorViewController
-        vc.viewModel = TextEditorViewModel(value: value.value, label: value.label)
+        let vm = TextEditorViewModel(value: value.value, label: value.label)
+        let vc = TextEditorViewController.new(viewModel: vm)
         vc.viewModel.cancelCallback = {
             self.navigationController.popViewController(animated: true)
         }

@@ -18,8 +18,15 @@ class AccountDetailViewController: UIViewController {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var nameField: UITextField!
 
-    var viewModel: AccountDetailViewModel!
+    private (set) var viewModel: AccountDetailViewModel!
     var navigation: AccountDetailNavigation?
+    
+    static func new(viewModel: AccountDetailViewModel) -> AccountDetailViewController {
+        let sb = UIStoryboard(name: "Accounts", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "AccountDetail") as! AccountDetailViewController
+        vc.viewModel = viewModel
+        return vc
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -34,8 +34,15 @@ class TransactionDetailViewController: UITableViewController {
         }
     }
 
-    var viewModel: TransactionDetailViewModel!
+    private (set) var viewModel: TransactionDetailViewModel!
     var navigation: TransactionDetailNavigation?
+    
+    static func new(viewModel: TransactionDetailViewModel) -> TransactionDetailViewController {
+        let sb = UIStoryboard(name: "Transactions", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "TransactionDetail") as! TransactionDetailViewController
+        vc.viewModel = viewModel
+        return vc
+    }
 
     // MARK: - View controller lifecycle
 

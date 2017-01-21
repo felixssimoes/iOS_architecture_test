@@ -9,7 +9,14 @@ class TextEditorViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var fieldNameLabel: UILabel!
 
-    var viewModel: TextEditorViewModel!
+    private (set) var viewModel: TextEditorViewModel!
+    
+    static func new(viewModel: TextEditorViewModel) -> TextEditorViewController {
+        let sb = UIStoryboard(name: "Editors", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "TextEditor") as! TextEditorViewController
+        vc.viewModel = viewModel
+        return vc
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

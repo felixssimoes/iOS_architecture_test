@@ -108,7 +108,6 @@
 				5CCE938B718B6BE9D21838E4 /* LocalAccountsDataSource.swift */,
 				5CCE91BDDCD3436E41D683F2 /* LocalTransactionsDataProvider.swift */,
 			);
-			name = "Data Source";
 			path = "Data Source";
 			sourceTree = "<group>";
 		};
@@ -117,7 +116,6 @@
 			children = (
 				5CCE9813A24F89240F40FB34 /* TextEditorViewModel.swift */,
 			);
-			name = Editors;
 			path = Editors;
 			sourceTree = "<group>";
 		};
@@ -128,7 +126,6 @@
 				5CCE9B7BF7CED953A668A35C /* RealmDataStore.swift */,
 				5CCE91C99268D3AA38AE36A4 /* RealmTransactionsDataStore.swift */,
 			);
-			name = "Realm Data Store";
 			path = "Realm Data Store";
 			sourceTree = "<group>";
 		};
@@ -138,7 +135,6 @@
 				DCE1093B1DD895C800F8B68B /* Editors.storyboard */,
 				5CCE9B26135B98599BA2DB99 /* TextEditorViewController.swift */,
 			);
-			name = Editors;
 			path = Editors;
 			sourceTree = "<group>";
 		};
@@ -149,7 +145,6 @@
 				5CCE941074C7F3BC91748A11 /* MemoryDataStore.swift */,
 				5CCE91A9113956D98BB2A948 /* MemoryTransactionsDataStore.swift */,
 			);
-			name = "Memory Data Store";
 			path = "Memory Data Store";
 			sourceTree = "<group>";
 		};
@@ -203,7 +198,6 @@
 				DC4FCD211DC6B563007D28AE /* Transactions */,
 				DC16BC6C1DC3A280005FBDC2 /* LaunchScreen.storyboard */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -212,7 +206,6 @@
 			children = (
 				DC16BC6A1DC3A280005FBDC2 /* Assets.xcassets */,
 			);
-			name = Resources;
 			path = Resources;
 			sourceTree = "<group>";
 		};
@@ -221,7 +214,6 @@
 			children = (
 				DC16BC6F1DC3A280005FBDC2 /* Info.plist */,
 			);
-			name = "Support Files";
 			path = "Support Files";
 			sourceTree = "<group>";
 		};
@@ -230,7 +222,6 @@
 			children = (
 				DC16BC631DC3A280005FBDC2 /* AppDelegate.swift */,
 			);
-			name = Application;
 			path = Application;
 			sourceTree = "<group>";
 		};
@@ -241,7 +232,6 @@
 				5CCE931475B72D9C0781E93F /* Editors */,
 				DC4FCD221DC6B577007D28AE /* Transactions */,
 			);
-			name = "View Models";
 			path = "View Models";
 			sourceTree = "<group>";
 		};
@@ -256,7 +246,6 @@
 				5CCE9D010BF50BC826445D35 /* DataStore.swift */,
 				5CCE9C1405401E60E34B7E90 /* TransactionModel.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -265,7 +254,6 @@
 			children = (
 				DC16BC811DC3A47C005FBDC2 /* Result.swift */,
 			);
-			name = Helpers;
 			path = Helpers;
 			sourceTree = "<group>";
 		};
@@ -276,7 +264,6 @@
 				5CCE9052D7A5456B13E26CD2 /* EditorsCoordinator.swift */,
 				DCEF6A181DC76090000EF33E /* TransactionsCoordinator.swift */,
 			);
-			name = Coordinators;
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
@@ -286,7 +273,6 @@
 				DC16BC8D1DC3D009005FBDC2 /* AccountDetailViewModel.swift */,
 				DC16BC871DC3BA16005FBDC2 /* AccountsListViewModel.swift */,
 			);
-			name = Accounts;
 			path = Accounts;
 			sourceTree = "<group>";
 		};
@@ -297,7 +283,6 @@
 				DC4FCD271DC6B883007D28AE /* Transactions.storyboard */,
 				DC4FCD231DC6B5EC007D28AE /* TransactionsListViewController.swift */,
 			);
-			name = Transactions;
 			path = Transactions;
 			sourceTree = "<group>";
 		};
@@ -307,18 +292,16 @@
 				5CCE9617B7FC42ABD575C218 /* TransactionDetailViewModel.swift */,
 				DC4FCD251DC6B60F007D28AE /* TransactionsListViewModel.swift */,
 			);
-			name = Transactions;
 			path = Transactions;
 			sourceTree = "<group>";
 		};
 		DC99C5391DC4D25E00EC071B /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
-				DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */,
 				DC99C53A1DC4D27500EC071B /* Accounts.storyboard */,
 				DC16BC891DC3BB8B005FBDC2 /* AccountsListViewController.swift */,
+				DC16BC8B1DC3CFFB005FBDC2 /* AccountDetailViewController.swift */,
 			);
-			name = Accounts;
 			path = Accounts;
 			sourceTree = "<group>";
 		};

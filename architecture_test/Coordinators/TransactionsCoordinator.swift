@@ -14,8 +14,6 @@ class TransactionsCoordinator {
     private let dataSource: DataSource
     private let account: AccountModel
     
-    private let storyboard = UIStoryboard(name: "Transactions", bundle: nil)
-    
     init(account: AccountModel, navigationController: UINavigationController, dataSource: DataSource) {
         self.navigationController = navigationController
         self.dataSource = dataSource
@@ -27,8 +25,8 @@ class TransactionsCoordinator {
     }
     
     private func showTransactionsList() {
-        let vc = storyboard.instantiateViewController(withIdentifier: "TransactionsList") as! TransactionsListViewController
-        vc.viewModel = TransactionsListViewModel(account: account, dataStore: dataSource)
+        let vm = TransactionsListViewModel(account: account, dataStore: dataSource)
+        let vc = TransactionsListViewController.new(viewModel: vm)
         vc.navigation = TransactionsListNavigation(onNewTransaction: {
             self.showNewTransaction()
         }, onSelectTransaction: { transaction in
@@ -39,9 +37,8 @@ class TransactionsCoordinator {
     }
 
     private func showDetail(forTransaction transaction: TransactionModel) {
-        let vc = storyboard.instantiateViewController(withIdentifier: "TransactionDetail") as! TransactionDetailViewController
-
-        vc.viewModel = TransactionDetailViewModel(transaction: transaction, dataStore: dataSource)
+        let vm = TransactionDetailViewModel(transaction: transaction, dataStore: dataSource)
+        let vc = TransactionDetailViewController.new(viewModel: vm)
         vc.navigation = TransactionDetailNavigation(onSave: {
             self.navigationController.popViewController(animated: true)
         }, onCancel: {
@@ -62,10 +59,9 @@ class TransactionsCoordinator {
     }
 
     private func showNewTransaction() {
-        let vc = storyboard.instantiateViewController(withIdentifier: "TransactionDetail") as! TransactionDetailViewController
+        let vm = TransactionDetailViewModel(account: account, dataStore: dataSource)
+        let vc = TransactionDetailViewController.new(viewModel: vm)
         let nc = UINavigationController(rootViewController: vc)
-
-        vc.viewModel = TransactionDetailViewModel(account: account, dataStore: dataSource)
         vc.navigation = TransactionDetailNavigation(onSave: {
             nc.dismiss(animated: true)
         }, onCancel: {

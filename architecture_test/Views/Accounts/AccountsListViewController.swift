@@ -16,8 +16,15 @@ struct AccountsListNavigation {
 
 class AccountsListViewController: UITableViewController {
 
-    var viewModel: AccountsListViewModel!
+    private (set) var viewModel: AccountsListViewModel!
     var navigation: AccountsListNavigation?
+    
+    static func new(viewModel: AccountsListViewModel) -> AccountsListViewController {
+        let sb = UIStoryboard(name: "Accounts", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "AccountsList") as! AccountsListViewController
+        vc.viewModel = viewModel
+        return vc
+    }
     
     // MARK: - View controller lifecycle
 

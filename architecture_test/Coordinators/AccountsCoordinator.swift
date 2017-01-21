@@ -12,7 +12,6 @@ import UIKit
 class AccountsCoordinator {
     private let navigationController: UINavigationController
     private let dataSource: DataSource
-    private var storyboard = UIStoryboard(name: "Accounts", bundle: nil)
 
     init(navigationController: UINavigationController, dataSource: DataSource) {
         self.navigationController = navigationController
@@ -24,8 +23,8 @@ class AccountsCoordinator {
     }
     
     private func showAccountsList() {
-        let vc = storyboard.instantiateViewController(withIdentifier: "AccountsList") as! AccountsListViewController
-        vc.viewModel = AccountsListViewModel(accountsDataProvider: dataSource.accounts())
+        let vm = AccountsListViewModel(accountsDataProvider: dataSource.accounts())
+        let vc = AccountsListViewController.new(viewModel: vm)
         vc.navigation = AccountsListNavigation(onNewAccount: {
             self.showDetail(forAccount: nil)
         }, onSelectAccount: { account in
@@ -38,11 +37,10 @@ class AccountsCoordinator {
     }
     
     private func showDetail(forAccount account: AccountModel?) {
-        let vc = storyboard.instantiateViewController(withIdentifier: "AccountDetail") as! AccountDetailViewController
+        let vm = AccountDetailViewModel(account: account, accountsDataProvider: dataSource.accounts())
+        let vc = AccountDetailViewController.new(viewModel: vm)
         let nc = UINavigationController(rootViewController: vc)
         
-        vc.viewModel = AccountDetailViewModel(account: account,
-                                              accountsDataProvider: dataSource.accounts())
         vc.navigation = AccountDetailNavigation(onSave: {
             nc.dismiss(animated: true, completion: nil)
         }, onCancel: {
