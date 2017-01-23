@@ -12,7 +12,7 @@ class TextEditorViewController: UIViewController {
     private (set) var viewModel: TextEditorViewModel!
     
     static func new(viewModel: TextEditorViewModel) -> TextEditorViewController {
-        let sb = UIStoryboard(name: "Editors", bundle: nil)
+        let sb = AppStoryboard.editors.instance
         let vc = sb.instantiateViewController(withIdentifier: "TextEditor") as! TextEditorViewController
         vc.viewModel = viewModel
         return vc

@@ -38,7 +38,7 @@ class TransactionDetailViewController: UITableViewController {
     var navigation: TransactionDetailNavigation?
     
     static func new(viewModel: TransactionDetailViewModel) -> TransactionDetailViewController {
-        let sb = UIStoryboard(name: "Transactions", bundle: nil)
+        let sb = AppStoryboard.transactions.instance
         let vc = sb.instantiateViewController(withIdentifier: "TransactionDetail") as! TransactionDetailViewController
         vc.viewModel = viewModel
         return vc

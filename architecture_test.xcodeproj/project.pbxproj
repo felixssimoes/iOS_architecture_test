@@ -23,6 +23,7 @@
 		5CCE9BCA6339B1114984BD12 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9B5A9DC417866F31ACAE /* DataSource.swift */; };
 		5CCE9DD66673DACEDC4BA7EC /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9C1405401E60E34B7E90 /* TransactionModel.swift */; };
 		5CCE9E9825706210710F2FD0 /* LocalAccountsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE938B718B6BE9D21838E4 /* LocalAccountsDataSource.swift */; };
+		5CCE9F236D2CED796743D71C /* AppStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9B762AC9091C782D2321 /* AppStoryboard.swift */; };
 		5CCE9F523551A41615AD40DA /* MemoryAccountsDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE92DBEC46B387D13C4B4C /* MemoryAccountsDataStore.swift */; };
 		5CCE9FAD2A1AF4C5DD98D9FE /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE9DC8DB6961C52CF98953 /* AccountModel.swift */; };
 		DC16BC641DC3A280005FBDC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC16BC631DC3A280005FBDC2 /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		5CCE9813A24F89240F40FB34 /* TextEditorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewModel.swift; sourceTree = "<group>"; };
 		5CCE9B26135B98599BA2DB99 /* TextEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		5CCE9B5A9DC417866F31ACAE /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		5CCE9B762AC9091C782D2321 /* AppStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStoryboard.swift; sourceTree = "<group>"; };
 		5CCE9B7BF7CED953A668A35C /* RealmDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDataStore.swift; sourceTree = "<group>"; };
 		5CCE9C1405401E60E34B7E90 /* TransactionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		5CCE9CC95CEC705464343B70 /* RealmAccountsDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmAccountsDataStore.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				5CCE9594B4205F2354AF8A54 /* Editors */,
 				DC4FCD211DC6B563007D28AE /* Transactions */,
 				DC16BC6C1DC3A280005FBDC2 /* LaunchScreen.storyboard */,
+				5CCE9B762AC9091C782D2321 /* AppStoryboard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				5CCE907447F935AED1008411 /* TextEditorViewController.swift in Sources */,
 				5CCE9ABF712020B9DDD78648 /* TextEditorViewModel.swift in Sources */,
 				5CCE9575C4252C18D13E415F /* EditorsCoordinator.swift in Sources */,
+				5CCE9F236D2CED796743D71C /* AppStoryboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

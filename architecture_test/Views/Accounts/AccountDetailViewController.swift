@@ -22,7 +22,7 @@ class AccountDetailViewController: UIViewController {
     var navigation: AccountDetailNavigation?
     
     static func new(viewModel: AccountDetailViewModel) -> AccountDetailViewController {
-        let sb = UIStoryboard(name: "Accounts", bundle: nil)
+        let sb = AppStoryboard.accounts.instance
         let vc = sb.instantiateViewController(withIdentifier: "AccountDetail") as! AccountDetailViewController
         vc.viewModel = viewModel
         return vc

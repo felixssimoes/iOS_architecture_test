@@ -20,7 +20,7 @@ class AccountsListViewController: UITableViewController {
     var navigation: AccountsListNavigation?
     
     static func new(viewModel: AccountsListViewModel) -> AccountsListViewController {
-        let sb = UIStoryboard(name: "Accounts", bundle: nil)
+        let sb = AppStoryboard.accounts.instance
         let vc = sb.instantiateViewController(withIdentifier: "AccountsList") as! AccountsListViewController
         vc.viewModel = viewModel
         return vc
